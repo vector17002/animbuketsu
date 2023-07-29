@@ -17,7 +17,7 @@ const Footer = () => {
       <p className='logo_text'>Developed by : Ansh kumain</p>
         <div className='flex justify-center items-center gap-2'>
           <Link
-          href='https://github.com/vector17002/animebucket'>
+          href='https://github.com/vector17002/animbuketsu'>
            <Image
             src='/assets/icons/github.png'
             width={30}
