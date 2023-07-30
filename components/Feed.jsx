@@ -8,6 +8,7 @@ const Feed = () => {
   const baseUrl ='https://api.jikan.moe/v4';
   const [popular , setPopular] = useState(null);
   const [popularLoading , setPopularLoading] = useState(false);
+  const [news , setNews] = useState(null);
   const [searchText , setSearchText] = useState('');
   const [searchResult , setSearchResult] = useState(null);
   useEffect(()=>{
@@ -25,7 +26,18 @@ const Feed = () => {
         setPopularLoading(false);
       }
     }
+    const getNews = async () => {
+        try {
+          const res = await fetch(`https://api.jikan.moe/v4/top/anime`)
+          const obj = await res.json();
+          setNews(obj.data);
+          console.log(news);
+        } catch (error) {
+          console.log(error);
+        }
+    }
     getPopular();  
+    getNews();
   },[])
   const handleSearch = (e) =>{
      setSearchText(e.target.value)
@@ -93,6 +105,30 @@ const Feed = () => {
   </MobileView></>) : (
           <div className='grid sm:grid-cols-3 lg:grid-cols-5 grid-cols-2 lg:gap-7 gap-3 mt-5 mb-10'>
             {popular?.map((anime , idx) => (
+              <Card anime={anime} key={idx} idx={idx}/>
+            ))}
+        </div>
+        )}
+    </div>
+    {/* Top results */}
+    <div className='w-full flex-col mt-16'>
+        <p className='orange_gradient subhead_text'>Top Animes</p>
+        {popularLoading? ( 
+          <>
+        <BrowserView>
+        <div className='grid sm:grid-cols-3 lg:grid-cols-5 grid-cols-2 gap-10 mt-5 mb-10'>
+        <CardSkeleton/>
+        <CardSkeleton/>
+        <CardSkeleton/>
+        <CardSkeleton/>
+        <CardSkeleton/>
+        </div>
+        </BrowserView>
+        <MobileView className='flex-center mb-10'>
+    <img src='/assets/icons/loader.svg' alt='loading' className='w-20 h-20 object-contain'/>
+  </MobileView></>) : (
+          <div className='grid sm:grid-cols-3 lg:grid-cols-5 grid-cols-2 lg:gap-7 gap-3 mt-5 mb-10'>
+            {news?.map((anime , idx) => (
               <Card anime={anime} key={idx} idx={idx}/>
             ))}
         </div>

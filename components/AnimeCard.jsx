@@ -44,7 +44,7 @@ const AnimeCard = ({animeDetail , handleAdd , added}) => {
             frameBorder='0'
             allowFullScreen
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-            className='w-full min-h-[230px] rounded-xl border-2 border-green-800'>
+            className='w-full min-h-[240px] rounded-xl border-2 border-green-800'>
             </iframe>
           </div>
          ):(<></>)}

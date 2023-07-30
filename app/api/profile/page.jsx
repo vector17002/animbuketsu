@@ -50,7 +50,7 @@ const Profile = () => {
     
   return (
     <div className='w-full h-full flex flex-col justify-between items-center'>
-    <p className='orange_gradient subhead_text'>Continue-watching</p>
+    <p className='orange_gradient subhead_text'>Wishlist</p>
     <div className='grid sm:grid-cols-3 lg:grid-cols-4 grid-cols-1 gap-5 mt-5'>
     {list ? list.map((anime , idx)=>(
        anime.status === -1 ? 
@@ -58,13 +58,13 @@ const Profile = () => {
     )) : (<>
       There are no anime added 
     </>)}</div>
-    <p className='orange_gradient subhead_text'>Completed</p>
+    {/* <p className='orange_gradient subhead_text'>Completed</p>
     <div className='grid sm:grid-cols-3 lg:grid-cols-4 grid-cols-1 gap-5 mt-5'>
     {list?.map((anime , idx)=>(
        anime.status === 1 ? 
       ( <Wishes key={anime.animeName} anime={anime} idx={idx}/>) : (<></>)
     ))}
-    </div>
+    </div> */}
     </div>
   )
 }
