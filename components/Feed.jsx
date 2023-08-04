@@ -104,7 +104,7 @@ const Feed = () => {
     <img src='/assets/icons/loader.svg' alt='loading' className='w-20 h-20 object-contain'/>
   </MobileView></>) : (
           <div className='grid sm:grid-cols-3 lg:grid-cols-5 grid-cols-2 lg:gap-7 gap-3 mt-5 mb-10'>
-            {popular?.map((anime , idx) => (
+            {popular?.slice(0 , popular.length - 15).map((anime , idx) => (
               <Card anime={anime} key={idx} idx={idx}/>
             ))}
         </div>
@@ -128,7 +128,7 @@ const Feed = () => {
     <img src='/assets/icons/loader.svg' alt='loading' className='w-20 h-20 object-contain'/>
   </MobileView></>) : (
           <div className='grid sm:grid-cols-3 lg:grid-cols-5 grid-cols-2 lg:gap-7 gap-3 mt-5 mb-10'>
-            {news?.map((anime , idx) => (
+            {news?.slice(0 , news.length - 15).map((anime , idx) => (
               <Card anime={anime} key={idx} idx={idx}/>
             ))}
         </div>
