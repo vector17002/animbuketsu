@@ -10,12 +10,8 @@ export const POST = async (req) =>{
                 animeName,
                 episodes
             })
-            const check = WishList.findOne(newList);
-
-            if(!check)
-            {
                 await newList.save();
-            }
+            
             return new Response(JSON.stringify(newList) , {
                 status: 201})
     } catch (error) {
