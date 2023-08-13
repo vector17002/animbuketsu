@@ -1,6 +1,8 @@
 'use client';
 import { useSession } from 'next-auth/react';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import CardSkeleton from '@utils/CardSkeleton';
+import { BrowserView , MobileView } from 'react-device-detect';
 const Wishes = ({anime , idx}) =>{
   const [completed , setCompleted] = useState(anime.completed);
   const total = anime.episodes;
@@ -35,8 +37,11 @@ const Wishes = ({anime , idx}) =>{
 const Profile = () => {
   const {data : session} = useSession();
   const [list , setList] = useState([]);
+  const [fething , setFething] = useState(false);
   useEffect(()=>{
     const fetchList = async ()=>{
+      try{
+        setFething(true);
         const response = await fetch(`/api/profile/${session?.user.id}/list`);
         const data = response.json();
         const wish = await data.then((result)=>{
@@ -44,6 +49,11 @@ const Profile = () => {
         })
         const wishes = JSON.stringify(wish)
         setList(JSON.parse(wishes))
+        setFething(false);
+      }
+      catch(error){
+        console.log(error);
+      }
     }
     fetchList();
   },[])
@@ -51,20 +61,26 @@ const Profile = () => {
   return (
     <div className='w-full h-full flex flex-col justify-between items-center'>
     <p className='orange_gradient subhead_text'>Wishlist</p>
-    <div className='grid sm:grid-cols-3 lg:grid-cols-4 grid-cols-1 gap-5 mt-5'>
-    {list ? list.map((anime , idx)=>(
-       anime.status === -1 ? 
-      ( <Wishes key={anime.animeName} anime={anime} idx={idx}/>) : (<></>)
+    {fething? ( <>
+        <BrowserView>
+        <div className='grid sm:grid-cols-3 lg:grid-cols-4 grid-cols-2 gap-10 mt-5 mb-10'>
+        <CardSkeleton/>
+        <CardSkeleton/>
+        <CardSkeleton/>
+        <CardSkeleton/>
+        </div>
+        </BrowserView>
+        <MobileView className='flex-center mb-10'>
+    <img src='/assets/icons/loader.svg' alt='loading' className='w-20 h-20 object-contain'/>
+  </MobileView></>) : (
+      <div className='grid sm:grid-cols-3 lg:grid-cols-4 grid-cols-2 gap-2 xs:gap-5 mt-5'>
+    {list? list.map((anime , idx)=>(
+   <Wishes key={anime.animeName} anime={anime} idx={idx}/>
     )) : (<>
       There are no anime added 
-    </>)}</div>
-    {/* <p className='orange_gradient subhead_text'>Completed</p>
-    <div className='grid sm:grid-cols-3 lg:grid-cols-4 grid-cols-1 gap-5 mt-5'>
-    {list?.map((anime , idx)=>(
-       anime.status === 1 ? 
-      ( <Wishes key={anime.animeName} anime={anime} idx={idx}/>) : (<></>)
-    ))}
-    </div> */}
+    </>)}
+    </div>
+    )}
     </div>
   )
 }
