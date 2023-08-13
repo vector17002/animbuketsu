@@ -7,22 +7,22 @@ const Wishes = ({anime , idx}) =>{
   const [completed , setCompleted] = useState(anime.completed);
   const total = anime.episodes;
   const {data : session} = useSession();
-  const handleAdd = async (e) =>{
-    if(completed === total)
-    {
-      alert(`Congratulation on completing ${anime.animeName}`);
-      return ;
-    } 
-    setCompleted(completed+1);
-  }
-  const handleMinus =(e) =>{
-    if(completed === 0)
-    {
-      alert('Oops I think you are checking my programming logic !!');
-      return;
-    }
-    setCompleted(completed-1);
-  }
+  // const handleAdd = async (e) =>{
+  //   if(completed === total)
+  //   {
+  //     alert(`Congratulation on completing ${anime.animeName}`);
+  //     return ;
+  //   } 
+  //   setCompleted(completed+1);
+  // }
+  // const handleMinus =(e) =>{
+  //   if(completed === 0)
+  //   {
+  //     alert('Oops I think you are checking my programming logic !!');
+  //     return;
+  //   }
+  //   setCompleted(completed-1);
+  // }
 
   return (
     <div 
@@ -73,9 +73,9 @@ const Profile = () => {
         <MobileView className='flex-center mb-10'>
     <img src='/assets/icons/loader.svg' alt='loading' className='w-20 h-20 object-contain'/>
   </MobileView></>) : (
-      <div className='grid sm:grid-cols-3 lg:grid-cols-4 grid-cols-2 gap-2 xs:gap-5 mt-5'>
-    {list? list.map((anime , idx)=>(
-   <Wishes key={anime.animeName} anime={anime} idx={idx}/>
+      <div className='grid sm:grid-cols-3 lg:grid-cols-4 grid-cols-2 gap-2 sm:gap-5 mt-5'>
+    {list?list.map((anime , idx)=>(
+      <Wishes key={anime.animeName} anime={anime} idx={idx}/>
     )) : (<>
       There are no anime added 
     </>)}
