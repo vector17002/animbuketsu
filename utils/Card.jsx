@@ -8,9 +8,9 @@ const Card = ( { anime , idx} ) => {
   }
   return (
     <div onClick={(e)=>handleRoute()}
-    className='py-2 px-1 rounded-xl flex flex-col justify-between items-center border-amber-300 border-2 cursor-pointer'>
+    className='p-3 m-3 rounded-xl flex flex-col justify-between items-center border-amber-300 border-2 cursor-pointer'>
     <div>
-    <img src={anime.images.jpg.image_url} alt='img' className='lg:h-[300px] h-[250px] rounded-lg'/>
+    <img src={anime.images.jpg.image_url} alt='img' className='lg:h-[300px] h-[250px] min-w-[150px] lg:min-w-[200px] rounded-lg'/>
     </div>
     <div>
        <p className='desc'><span className='orange_gradient font-extrabold'>{idx+1}. </span>{anime.title_english? anime.title_english.substr(0,15): anime.title.substr(0,15)}..</p>  

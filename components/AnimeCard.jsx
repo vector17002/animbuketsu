@@ -1,8 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import CharacterCard from './CharacterCard';
+import { MdChevronLeft , MdChevronRight } from 'react-icons/md';
 const AnimeCard = ({animeDetail , handleAdd , added}) => {
   const [showMore , setShowMore] = useState(false);
   const [showTrailer , setShowTrailer] = useState(false);
+  const [characters , setCharacters] = useState(null);
+
+  useEffect(()=>{
+     const data = fetch(`https://api.jikan.moe/v4/anime/${animeDetail.mal_id}/characters`);
+     data.then((result)=>{
+       result.json().then((response)=> {
+      setCharacters(response.data);
+      console.log(characters)});
+     }).catch((error)=>{
+      console.log(error);
+     })
+     },[])
   return (
+    <div className='w-full h-full flex flex-col'>
     <div className="w-full h-full sm:flex xs:flex-row justify-between p-3 m-3">
        <div className='flex flex-col gap-5 items-center px-2 m-2 rounded-xl glassmorphism max-h-[450px]'>
            <img
@@ -56,6 +71,7 @@ const AnimeCard = ({animeDetail , handleAdd , added}) => {
             <p><span className='orange_gradient'> Duration: </span> {animeDetail.duration}</p>            
             <p><span className='orange_gradient'> Aired: </span> {animeDetail.aired.from.substr(0,10)}</p>            
        </div>
+    </div>
     </div>
   )
 }

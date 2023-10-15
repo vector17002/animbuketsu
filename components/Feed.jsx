@@ -4,6 +4,8 @@ import React , {useState , useEffect} from 'react'
 import Footer from './Footer';
 import CardSkeleton from '@utils/CardSkeleton';
 import { BrowserView , MobileView } from 'react-device-detect';
+import {MdChevronLeft , MdChevronRight} from 'react-icons/md'
+import { document } from 'postcss';
 const Feed = () => {
   const baseUrl ='https://api.jikan.moe/v4';
   const [popular , setPopular] = useState(null);
@@ -79,11 +81,15 @@ const Feed = () => {
       {searchResult? (
         <div className='w-full flex-col'>
         <p className='orange_gradient subhead_text'>Based on your search</p>
-        <div className='grid sm:grid-cols-3 lg:grid-cols-5 grid-cols-2 gap-5 mt-5'>
+        <div className='relative flex items-center'>
+        <MdChevronLeft size={40} />
+        <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
             {searchResult?.map((anime , idx) => (
               <Card anime={anime} key={idx} idx={idx}/>
             ))}
-        </div> 
+            </div>
+          <MdChevronRight size={40} />
+        </div>
     </div>
       ) : (<></>)}
     {/* Popular result  */}
@@ -103,10 +109,14 @@ const Feed = () => {
         <MobileView className='flex-center mb-10'>
     <img src='/assets/icons/loader.svg' alt='loading' className='w-20 h-20 object-contain'/>
   </MobileView></>) : (
-          <div className='grid sm:grid-cols-3 lg:grid-cols-5 grid-cols-2 lg:gap-7 gap-3 mt-5 mb-10'>
-            {popular?.slice(0 , popular.length - 15).map((anime , idx) => (
+        <div className='relative flex items-center'>
+        <MdChevronLeft size={40} />
+        <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
+            {popular?.map((anime , idx) => (
               <Card anime={anime} key={idx} idx={idx}/>
             ))}
+            </div>
+          <MdChevronRight size={40} />
         </div>
         )}
     </div>
@@ -127,14 +137,18 @@ const Feed = () => {
         <MobileView className='flex-center mb-10'>
     <img src='/assets/icons/loader.svg' alt='loading' className='w-20 h-20 object-contain'/>
   </MobileView></>) : (
-          <div className='grid sm:grid-cols-3 lg:grid-cols-5 grid-cols-2 lg:gap-7 gap-3 mt-5 mb-10'>
-            {news?.slice(0 , news.length - 15).map((anime , idx) => (
+        <div className='relative flex items-center'>
+        <MdChevronLeft size={40}/>
+        <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
+            {news?.map((anime , idx) => (
               <Card anime={anime} key={idx} idx={idx}/>
             ))}
+            </div>
+            <MdChevronRight size={40} />
         </div>
         )}
     </div>
-    <Footer/>
+    <Footer className='mt-10'/>
     </div>
 
   )
