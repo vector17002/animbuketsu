@@ -1,11 +1,9 @@
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
-import CharacterCard from './CharacterCard';
-import { MdChevronLeft , MdChevronRight } from 'react-icons/md';
 const AnimeCard = ({animeDetail , handleAdd , added}) => {
   const [showMore , setShowMore] = useState(false);
   const [showTrailer , setShowTrailer] = useState(false);
   const [characters , setCharacters] = useState(null);
-
   useEffect(()=>{
      const data = fetch(`https://api.jikan.moe/v4/anime/${animeDetail.mal_id}/characters`);
      data.then((result)=>{

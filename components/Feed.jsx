@@ -2,8 +2,6 @@
 import Card from '@utils/Card';
 import React , {useState , useEffect} from 'react'
 import Footer from './Footer';
-import CardSkeleton from '@utils/CardSkeleton';
-import { BrowserView , MobileView } from 'react-device-detect';
 import {MdChevronLeft , MdChevronRight} from 'react-icons/md'
 import { document } from 'postcss';
 const Feed = () => {
@@ -93,22 +91,12 @@ const Feed = () => {
     </div>
       ) : (<></>)}
     {/* Popular result  */}
-    <div className='w-full flex-col mt-16'>
+    <div className='w-full flex-col mt-10'>
         <p className='orange_gradient subhead_text'>Popular</p>
         {popularLoading? ( 
-          <>
-        <BrowserView>
-        <div className='grid sm:grid-cols-3 lg:grid-cols-5 grid-cols-2 gap-10 mt-5 mb-10'>
-        <CardSkeleton/>
-        <CardSkeleton/>
-        <CardSkeleton/>
-        <CardSkeleton/>
-        <CardSkeleton/>
-        </div>
-        </BrowserView>
-        <MobileView className='flex-center mb-10'>
+        <div className='flex-center mb-10'>
     <img src='/assets/icons/loader.svg' alt='loading' className='w-20 h-20 object-contain'/>
-  </MobileView></>) : (
+  </div>) : (
         <div className='relative flex items-center'>
         <MdChevronLeft size={40} />
         <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
@@ -121,22 +109,12 @@ const Feed = () => {
         )}
     </div>
     {/* Top results */}
-    <div className='w-full flex-col mt-16'>
+    <div className='w-full flex-col mt-10'>
         <p className='orange_gradient subhead_text'>Top Animes</p>
         {popularLoading? ( 
-          <>
-        <BrowserView>
-        <div className='grid sm:grid-cols-3 lg:grid-cols-5 grid-cols-2 gap-10 mt-5 mb-10'>
-        <CardSkeleton/>
-        <CardSkeleton/>
-        <CardSkeleton/>
-        <CardSkeleton/>
-        <CardSkeleton/>
-        </div>
-        </BrowserView>
-        <MobileView className='flex-center mb-10'>
+        <div className='flex-center mb-10'>
     <img src='/assets/icons/loader.svg' alt='loading' className='w-20 h-20 object-contain'/>
-  </MobileView></>) : (
+  </div>) : (
         <div className='relative flex items-center'>
         <MdChevronLeft size={40}/>
         <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
@@ -148,7 +126,7 @@ const Feed = () => {
         </div>
         )}
     </div>
-    <Footer className='mt-10'/>
+    <Footer className='mt-16'/>
     </div>
 
   )
