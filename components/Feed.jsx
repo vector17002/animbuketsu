@@ -91,7 +91,7 @@ const Feed = () => {
     </div>
       ) : (<></>)}
     {/* Popular result  */}
-    <div className='w-full flex-col mt-10'>
+    <div className='w-full h-full flex-col mt-10'>
         <p className='orange_gradient subhead_text'>Popular</p>
         {popularLoading? ( 
         <div className='flex-center mb-10'>
@@ -115,8 +115,8 @@ const Feed = () => {
         <div className='flex-center mb-10'>
     <img src='/assets/icons/loader.svg' alt='loading' className='w-20 h-20 object-contain'/>
   </div>) : (
-        <div className='relative flex items-center'>
-        <MdChevronLeft size={40}/>
+        <div className='relative flex items-center mb-10'>
+        <MdChevronLeft size={40} />
         <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
             {news?.map((anime , idx) => (
               <Card anime={anime} key={idx} idx={idx}/>

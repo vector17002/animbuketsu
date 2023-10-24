@@ -1,6 +1,7 @@
 'use client';
 import { useSession } from 'next-auth/react';
 import { FormControl , InputLabel , Select , MenuItem } from '@mui/material';
+import {MdChevronLeft , MdChevronRight} from 'react-icons/md'
 import React, { useEffect, useState } from 'react';
 const Wishes = ({anime}) =>{
   const {data : session} = useSession();
@@ -35,7 +36,7 @@ const Wishes = ({anime}) =>{
     }
   }
   return (
-    <div className='rounded-xl flex flex-col justify-between items-center glassmorphism cursor-pointer'>
+    <div className='rounded-xl flex flex-col justify-center items-center cursor-pointer border-2 border-blue-100  p-3 bg-white'>
     <div>
     <img src={anime.animeImg} alt='img' className='lg:h-[300px] h-[250px] rounded-lg'/>
     </div> 
@@ -48,7 +49,7 @@ const Wishes = ({anime}) =>{
 }
 const Profile = () => {
   const {data : session} = useSession();
-  const [category , setCategory] = useState('wish');
+  const [category , setCategory] = useState('watch later');
   const [anime , setAnime] = useState(null);
   const [fetching , setFetching] = useState(false);
   useEffect(()=>{
@@ -90,32 +91,34 @@ const Profile = () => {
   return(
   <div className='w-full h-full flex flex-col justify-between items-center'>
   <FormControl className='w-3/5'>
-  <InputLabel id="demo-simple-select-label">Category</InputLabel>
+  <InputLabel id="demo-simple-select-label">{category.toUpperCase()}</InputLabel>
   <Select
     labelId="demo-simple-select-label"
     id="demo-simple-select"
-    label="Wish"
+    label="Watch Later"
     value={category}
     onChange={handleDropdown}
   >
     <MenuItem value={'completed'}>Completed</MenuItem>
     <MenuItem value={'watching'}>Watching</MenuItem>
-    <MenuItem value={'wishlist'}>Watch Later</MenuItem>
+    <MenuItem value={'watch later'}>Watch Later</MenuItem>
   </Select>
 </FormControl>
-<div className='w-full flex flex-col justify-between items-center'>
+<div className='w-full flex flex-col mt-10'>
   {fetching? (
    <div className='flex-center mb-10'>
    <img src='/assets/icons/loader.svg' alt='loading' className='w-20 h-20 object-contain'/>
    </div>
    ) : (
-     <div className='grid sm:grid-cols-3 lg:grid-cols-4 grid-cols-2 gap-2 sm:gap-5 mt-5 items-center'>
-    {anime?anime.map((anime , idx)=>(
-    <Wishes key={anime.animeName} anime={anime} idx={idx}/>
-   )) : (<p className='blue_gradient subhead_text justify-items-center'>
-     Oops no result found
-   </p>)}
-   </div>
+   <div className='relative flex items-center mb-10'>
+   <MdChevronLeft size={40}/>
+        <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-5'>
+            {anime?.map((anime , idx) => (
+              <Wishes key={anime.animeName} anime={anime} idx={idx}/>
+            ))}
+            </div>
+            <MdChevronRight size={40}/>
+        </div>
     )}
     </div>
 </div>
