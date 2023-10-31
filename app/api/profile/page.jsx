@@ -5,9 +5,10 @@ import {MdChevronLeft , MdChevronRight} from 'react-icons/md'
 import React, { useEffect, useState } from 'react';
 const Wishes = ({anime}) =>{
   const {data : session} = useSession();
+  const baseURL = `/api/profile/${session?.user.id}/list`;
   const markComplete = async ()=>{
     try {
-       const response = await fetch(`/api/profile/${session?.user.id}/list`, {
+       const response = await fetch(baseURL, {
         method: 'POST',
         body : JSON.stringify({
           userId : session?.user.id,
@@ -21,13 +22,30 @@ const Wishes = ({anime}) =>{
   }
   const markWatching = async ()=>{
     try {
-      const response = await fetch(`/api/profile/${session?.user.id}/list`, {
+      const response = await fetch(baseURL, {
         method: 'POST',
         body: JSON.stringify(
           {
             userId : session?.user.id,
             animeName: anime.animeName,
-            status: 0
+            status: 0,
+
+          }
+        )
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const markDelete = async ()=>{
+    try {
+      const response = await fetch(baseURL, {
+        method: 'POST',
+        body: JSON.stringify(
+          {
+            userId : session?.user.id,
+            animeName: anime.animeName,
+            del : true
           }
         )
       })
@@ -41,8 +59,18 @@ const Wishes = ({anime}) =>{
     <img src={anime.animeImg} alt='img' className='lg:h-[300px] h-[250px] rounded-lg'/>
     </div> 
     <div className='flex flex-row justify-between items-center gap-4 mt-4'>
-      <button type='button' className='bg-green-500 hover:bg-green-800 hover:text-white p-1 sm:p-2 rounded-lg text-bolder' onClick={markComplete}>Complete</button>
-      <button type='button' className='bg-amber-500 hover:bg-amber-800 hover:text-white p-1 sm:p-2 rounded-lg text-bolder' onClick={markWatching}>Incomplete</button>
+      <button type='button' onClick={markComplete}>
+      <img src='/assets/icons/tick.svg' className='object-contain rounded-full min-w-[40px] max-w-[40px]'/>
+      </button>
+      <button type='button'  onClick={markWatching}>
+        <img src='/assets/icons/cancel.png' className='object-contain rounded-full border-2 border-black min-w-[40px] max-w-[40px]' />
+      </button>
+      <button type='button' onClick={markDelete}>
+       <img src='/assets/icons/bin.png' className='object-contain rounded-full min-w-[40px] max-w-[40px]'/>
+      </button>
+      <button type='button'>
+        <img src='/assets/icons/eye.png' className='object-contain rounded-full border-2 border-black min-w-[40px] max-w-[40px]'/>
+      </button>
     </div>
     </div>
   )

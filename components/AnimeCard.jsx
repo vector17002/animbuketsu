@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 const AnimeCard = ({animeDetail , handleAdd , added}) => {
   const [showMore , setShowMore] = useState(false);
@@ -57,7 +56,7 @@ const AnimeCard = ({animeDetail , handleAdd , added}) => {
             frameBorder='0'
             allowFullScreen
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-            className='w-full h-[300px] rounded-xl border-2 border-green-800'>
+            className='sm:w-full w-[85vw] h-[300px] rounded-xl border-2 border-green-800'>
             </iframe>
           </div>
          ):(<></>)}
