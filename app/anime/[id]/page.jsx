@@ -46,6 +46,18 @@ const AnimeProfile = () =>{
         location.reload();
        }
     }
+    const checkAdded = async () =>{
+       try {
+        console.log(animeDetail.title_english)
+        const response = await (await fetch(`/api/profile/${session?.user.id}/list`)).json().then((res) => {
+          return res
+        }).catch((error) => console.log(error));
+       } catch (error) {
+        console.log(error)
+        return false;
+       }
+       return false;
+    }
     getDetails();
    },[])
    return(
