@@ -3,7 +3,7 @@ import { useSession } from 'next-auth/react';
 import { FormControl , InputLabel , Select , MenuItem } from '@mui/material';
 import {MdChevronLeft , MdChevronRight} from 'react-icons/md'
 import React, { useEffect, useState } from 'react';
-const Wishes = ({anime}) =>{
+const Wishes = ({anime , change}) =>{
   const {data : session} = useSession();
   const baseURL = `/api/profile/${session?.user.id}/list`;
   const markComplete = async ()=>{
@@ -11,13 +11,14 @@ const Wishes = ({anime}) =>{
        const response = await fetch(baseURL, {
         method: 'POST',
         body : JSON.stringify({
-          userId : session?.user.id,
-          animeName : anime.animeName,
+          id : anime._id,
           status : 1
         })
        })
     } catch (error) {
       console.log(error); 
+    }finally{
+       change('completed');
     }
   }
   const markWatching = async ()=>{
@@ -26,8 +27,7 @@ const Wishes = ({anime}) =>{
         method: 'POST',
         body: JSON.stringify(
           {
-            userId : session?.user.id,
-            animeName: anime.animeName,
+            id : anime._id,
             status: 0,
 
           }
@@ -35,6 +35,8 @@ const Wishes = ({anime}) =>{
       })
     } catch (error) {
       console.log(error);
+    }finally{
+      change('watching')
     }
   }
   const markDelete = async ()=>{
@@ -43,14 +45,32 @@ const Wishes = ({anime}) =>{
         method: 'POST',
         body: JSON.stringify(
           {
-            userId : session?.user.id,
-            animeName: anime.animeName,
+            id : anime._id,
             del : true
           }
         )
       })
     } catch (error) {
       console.log(error);
+    }finally{
+      change('deleted')
+    }
+  }
+  const markLater = async () =>{
+    try {
+      const response = await fetch(baseURL, {
+        method: 'POST',
+        body: JSON.stringify(
+          {
+            id : anime._id,
+            status: -1
+          }
+        )
+      })
+    } catch (error) {
+      console.log(error);
+    }finally{
+      change('watch later')
     }
   }
   return (
@@ -63,13 +83,13 @@ const Wishes = ({anime}) =>{
       <img src='/assets/icons/tick.svg' className='object-contain rounded-full min-w-[40px] max-w-[40px]'/>
       </button>
       <button type='button'  onClick={markWatching}>
-        <img src='/assets/icons/cancel.png' className='object-contain rounded-full border-2 border-black min-w-[40px] max-w-[40px]' />
+        <img src='/assets/icons/eye.png' className='object-contain rounded-full border-2 border-black min-w-[40px] max-w-[40px]' />
       </button>
       <button type='button' onClick={markDelete}>
        <img src='/assets/icons/bin.png' className='object-contain rounded-full min-w-[40px] max-w-[40px]'/>
       </button>
-      <button type='button'>
-        <img src='/assets/icons/eye.png' className='object-contain rounded-full border-2 border-black min-w-[40px] max-w-[40px]'/>
+      <button type='button' onClick={markLater}>
+        <img src='/assets/icons/cancel.png' className='object-contain rounded-full border-2 border-black min-w-[40px] max-w-[40px]'/>
       </button>
     </div>
     </div>
@@ -116,6 +136,9 @@ const Profile = () => {
   const handleDropdown = (e) =>{
      setCategory(e.target.value)
   }
+  const handleChange = (value) =>{
+      setCategory(value);
+  }
   return(
   <div className='w-full h-full flex flex-col justify-between items-center'>
   <FormControl className='w-3/5'>
@@ -142,7 +165,7 @@ const Profile = () => {
    <MdChevronLeft size={40}/>
         <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-5'>
             {anime?.map((anime , idx) => (
-              <Wishes key={anime.animeName} anime={anime} idx={idx}/>
+              <Wishes key={anime.animeName} anime={anime} idx={idx} change = {handleChange}/>
             ))}
             </div>
             <MdChevronRight size={40}/>

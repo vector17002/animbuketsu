@@ -12,11 +12,11 @@ export const GET = async (req , {params}) =>{
     }
 }
 export const POST = async (req) =>{
-    const {userId , animeName , status , del} = await req.json();
+    const {id , status , del} = await req.json();
     if(del){
         try{
        await connectToDB();
-       const List = await WishList.deleteOne({user : userId , animeName: animeName})
+       const List = await WishList.deleteOne({_id: id })
        return new Response(JSON.stringify(List) , {status : 201})
         }catch(error){
             console.log(error);
@@ -26,7 +26,7 @@ export const POST = async (req) =>{
     else{
     try {
         await connectToDB();
-        const List = await WishList.findOneAndUpdate({user : userId , animeName: animeName}, {
+        const List = await WishList.findOneAndUpdate({_id : id}, {
             $set: {
                 status: status
             }
