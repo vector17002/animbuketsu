@@ -8,7 +8,7 @@ const Card = ( { anime , idx} ) => {
   }
   return (
     <div onClick={(e)=>handleRoute()}
-    className='p-3 m-3 rounded-xl flex flex-col justify-between items-center border-amber-300 border-2 cursor-pointer hover:scale-105 relative'>
+    className='p-2 m-2 rounded-xl flex flex-col justify-between items-center border-amber-300 border-2 cursor-pointer hover:scale-105 relative'>
     <div>
     <img src={anime.images.jpg.image_url} alt='img' className='lg:h-[300px] h-[250px] min-w-[150px] lg:min-w-[200px] rounded-lg'/>
     </div>

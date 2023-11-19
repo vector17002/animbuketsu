@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 const Footer = () => {
   return (
-    <div className='w-[98vw] h-[150px] flex justify-between items-center bg-footer-image p-5'>
+    <div className='w-[100vw] h-[150px] flex justify-between items-center bg-footer-image p-5'>
     <Link href='/' className='flex gap-2 flex-center'>
         <Image
           src='/assets/images/logo.svg'

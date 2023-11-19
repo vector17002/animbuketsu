@@ -3,7 +3,7 @@ import Card from '@utils/Card';
 import React , {useState , useEffect} from 'react'
 import Footer from './Footer';
 import {MdChevronLeft , MdChevronRight} from 'react-icons/md'
-import { document } from 'postcss';
+import RandomGenerator from './RandomGenerator';
 const Feed = () => {
   const baseUrl ='https://api.jikan.moe/v4';
   const [popular , setPopular] = useState(null);
@@ -55,7 +55,7 @@ const Feed = () => {
     }
   }
   return (
-    <div className='w-full flex flex-col mt-16 justify-center items-center'>
+    <div className='w-[100vw] flex flex-col mt-16 justify-center items-center'>
     <form className='relative w-full sm:w-1/2 flex-center' onSubmit={(e) =>{
       e.preventDefault();
       findSearch();
@@ -77,11 +77,11 @@ const Feed = () => {
       </form>
       {/* Search result  */}
       {searchResult? (
-        <div className='w-full flex-col'>
-        <p className='orange_gradient subhead_text'>Based on your search</p>
+        <div className='w-full flex-col mt-10'>
+        <p className='orange_gradient subhead_text ml-4'>Based on your search</p>
         <div className='relative flex items-center'>
         <MdChevronLeft size={40} />
-        <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
+        <div className='flex flex-row w-[100vw] h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
             {searchResult?.map((anime , idx) => (
               <Card anime={anime} key={idx} idx={idx}/>
             ))}
@@ -92,7 +92,7 @@ const Feed = () => {
       ) : (<></>)}
     {/* Popular result  */}
     <div className='w-full h-full flex-col mt-10'>
-        <p className='orange_gradient subhead_text'>Popular</p>
+        <p className='orange_gradient subhead_text ml-4'>Popular</p>
         {popularLoading? ( 
         <div className='flex-center mb-10'>
     <img src='/assets/icons/loader.svg' alt='loading' className='w-20 h-20 object-contain'/>
@@ -110,14 +110,14 @@ const Feed = () => {
     </div>
     {/* Top results */}
     <div className='w-full flex-col mt-10'>
-        <p className='orange_gradient subhead_text'>Top Animes</p>
+        <p className='orange_gradient subhead_text ml-4'>Top Animes</p>
         {popularLoading? ( 
         <div className='flex-center mb-10'>
     <img src='/assets/icons/loader.svg' alt='loading' className='w-20 h-20 object-contain'/>
   </div>) : (
         <div className='relative flex items-center mb-10'>
         <MdChevronLeft size={40} />
-        <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
+        <div className='flex flex-row w-[100vw] h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
             {news?.map((anime , idx) => (
               <Card anime={anime} key={idx} idx={idx}/>
             ))}
@@ -126,6 +126,7 @@ const Feed = () => {
         </div>
         )}
     </div>
+    <RandomGenerator/>
     <Footer className='mt-16'/>
     </div>
 
