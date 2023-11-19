@@ -25,13 +25,13 @@ const RandomGenerator = () => {
        <div className='flex w-50 h-full items-center'>
        {anime ? ( 
         <div className='w-[250px]'>
-        {loading ? ( <img src='/assets/images/generatloading2.gif'/>) : (
+        {loading ? ( <img src='/assets/images/generatloading2.gif' alt='loading'/>) : (
           <div className= 'w-[250px] h-full lg:bg-white rounded-lg'>
           <Card anime={anime} idx={0}/>
           </div>
         )}
           </div>
-       ) : ( <img src='/assets/images/pikachu.gif' className='h-full object-contain'/>)}
+       ) : ( <img src='/assets/images/pikachu.gif' alt='Welcome' className='h-full object-contain'/>)}
        </div>
     </div>
     </div>
