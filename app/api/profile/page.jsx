@@ -79,9 +79,9 @@ const Wishes = ({anime , change , modal , detail}) =>{
     modal();
   }
   return (
-    <div className='rounded-xl flex flex-col justify-center items-center cursor-pointer border-2 border-blue-100  p-3 bg-white' onClick={handleModal}>
+    <div className='rounded-xl flex flex-col justify-center items-center cursor-pointer'>
     <div>
-    <img src={anime.animeImg} alt='img' className='lg:h-[300px] h-[250px] rounded-lg'/>
+    <img src={anime.animeImg} alt='img' className='lg:h-[300px] h-[250px] rounded-lg' onClick={handleModal}/>
     </div> 
     <div className='flex flex-row justify-between items-center gap-4 mt-4'>
       <button type='button' onClick={markComplete}>
