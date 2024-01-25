@@ -1,6 +1,5 @@
 import { connectToDB } from "@utils/database";
 import WishList from "@models/wishlist";
-import { connect } from "mongoose";
 export const GET = async (req , {params}) =>{
     try {
             await connectToDB();
@@ -14,7 +13,7 @@ export const GET = async (req , {params}) =>{
 export const POST = async (req) =>{
     const {id , status , del} = await req.json();
     if(del){
-        try{
+    try{
        await connectToDB();
        const List = await WishList.deleteOne({_id: id })
        return new Response(JSON.stringify(List) , {status : 201})
