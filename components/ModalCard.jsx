@@ -1,12 +1,15 @@
 "use client"
 import React from 'react'
 import { useSession } from 'next-auth/react';
+import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
+import { MdDelete, MdDeleteOutline, MdLiveTv } from "react-icons/md";
+import { TbEyeCancel } from "react-icons/tb";
 const ModalCard = ({ handleModal, anime, change }) => {
   const { data: session } = useSession();
   const baseURL = `/api/profile/${session?.user.id}/list`;
   const markComplete = async () => {
     try {
-      const response = await fetch(baseURL, {
+      await fetch(baseURL, {
         method: 'POST',
         body: JSON.stringify({
           id: anime._id,
@@ -21,7 +24,7 @@ const ModalCard = ({ handleModal, anime, change }) => {
   }
   const markWatching = async () => {
     try {
-      const response = await fetch(baseURL, {
+      await fetch(baseURL, {
         method: 'POST',
         body: JSON.stringify(
           {
@@ -38,7 +41,7 @@ const ModalCard = ({ handleModal, anime, change }) => {
   }
   const markDelete = async () => {
     try {
-      const response = await fetch(baseURL, {
+      await fetch(baseURL, {
         method: 'POST',
         body: JSON.stringify(
           {
@@ -55,7 +58,7 @@ const ModalCard = ({ handleModal, anime, change }) => {
   }
   const markLater = async () => {
     try {
-      const response = await fetch(baseURL, {
+      await fetch(baseURL, {
         method: 'POST',
         body: JSON.stringify(
           {
@@ -72,24 +75,34 @@ const ModalCard = ({ handleModal, anime, change }) => {
   }
   return (
     <div onClick={handleModal}>
-      {anime.animeName}
-      <div className='w-[100vw] h-[100vh] top-0 bottom-0 left-0 right-0 flex justify-center items-center fixed'>
-        <div className='flex flex-row justify-between items-center gap-4 mt-4'>
-          <button type='button' onClick={markComplete}>
-            <img src='/assets/icons/tick.svg' className='object-contain rounded-full min-w-[40px] max-w-[40px]' />
+      <div className='w-[100vw] h-[100vh] top-0 bottom-0 left-0 right-0 flex justify-center items-center fixed flex flex-col'>
+        <div className='flex w-full justify-center items-center' v>
+          <img
+            src={anime.animeImg}
+            alt='image'
+            className='object-contain rounded-xl border-2 border-amber-600'
+          />
+        </div>
+        <div className='flex  flex-col lg:flex-row justify-between items-center gap-5 mt-20'>
+          <button type='button' onClick={markComplete} className='flex justify-center item-center flex-row bg-green-500 p-3 rounded-lg'>
+            <p className='text-white text-xl'> Completed</p>
+            <IoCheckmarkDoneCircleOutline className='h-[30px] w-[30px] text-white mr-2' />
           </button>
-          <button type='button' onClick={markWatching}>
-            <img src='/assets/icons/eye.png' className='object-contain rounded-full border-2 border-black min-w-[40px] max-w-[40px]' />
+          <button type='button' className='flex justify-center item-center flex-row bg-blue-500 p-3 rounded-lg' onClick={markWatching}>
+            <p className='text-white text-xl'> Watching</p>
+            <MdLiveTv className='w-[30px] h-[30px] mr-3 text-white' />
           </button>
-          <button type='button' onClick={markDelete}>
-            <img src='/assets/icons/bin.png' className='object-contain rounded-full min-w-[40px] max-w-[40px]' />
+          <button type='button' className='flex justify-center item-center flex-row bg-rose-500 p-3 rounded-lg' onClick={markDelete}>
+            <p className='text-white text-xl'>Remove</p>
+            <MdDeleteOutline className='w-[30px] h-[30px] mr-2 text-white' />
           </button>
-          <button type='button' onClick={markLater}>
-            <img src='/assets/icons/cancel.png' className='object-contain rounded-full border-2 border-black min-w-[40px] max-w-[40px]' />
+          <button type='button' className='flex justify-center item-center flex-row bg-indigo-500 p-3 rounded-lg' onClick={markLater}>
+            <p className='text-white text-xl'>Watch Later</p>
+            <TbEyeCancel className='w-[30px] h-[30px] mr-2 text-white' />
           </button>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 
