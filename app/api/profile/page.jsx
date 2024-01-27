@@ -4,7 +4,11 @@ import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
 import React, { useEffect, useState } from 'react';
 import ModalCard from '@components/ModalCard';
+<<<<<<< HEAD
 const Wishes = ({ anime, change, modal, detail, idx }) => {
+=======
+const Wishes = ({ anime, modal, detail, idx }) => {
+>>>>>>> 0e89285 (modal upgraded)
 
   const handleModal = () => {
     detail(anime);
@@ -14,7 +18,11 @@ const Wishes = ({ anime, change, modal, detail, idx }) => {
     <div onClick={handleModal}
       className='p-2 m-2 rounded-xl flex flex-col justify-between items-center border-amber-300 border-2 cursor-pointer hover:scale-105 relative'>
       <div>
+<<<<<<< HEAD
         <img src={anime.animeImg} alt='img' className='lg:h-[300px] h-[250px] min-w-[175px] lg:min-w-[200px] rounded-lg' />
+=======
+        <img src={anime.animeImg} alt='img' className='lg:h-[300px] h-[250px] min-w-[150px] lg:min-w-[200px] rounded-lg' />
+>>>>>>> 0e89285 (modal upgraded)
       </div>
       <div>
         <p className='desc'><span className='orange_gradient font-extrabold'>{idx + 1}. </span>{anime.title_english ? anime.animeName.substr(0, 15) : anime.animeName.substr(0, 15)}..</p>
@@ -98,6 +106,7 @@ const Profile = () => {
             </div>
           ) : (
             <div className='relative flex items-center mb-10'>
+<<<<<<< HEAD
               <MdChevronLeft size={40} />
               <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-5'>
                 {anime?.map((anime, idx) => (
@@ -105,6 +114,15 @@ const Profile = () => {
                 ))}
               </div>
               <MdChevronRight size={40} />
+=======
+              {(anime?.length !== 0) ? (<> <MdChevronLeft size={40} />
+                <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-2'>
+                  {anime?.map((anime, idx) => (
+                    <Wishes key={anime.animeName} anime={anime} idx={idx} change={handleChange} modal={handleModal} detail={getDetail} />
+                  ))}
+                </div> </>) : (<></>)}
+              {(anime?.length >= 5) ? (<MdChevronRight size={40} />) : (<></>)}
+>>>>>>> 0e89285 (modal upgraded)
             </div>
           )}
         </div>
