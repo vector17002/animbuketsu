@@ -83,7 +83,7 @@ const ModalCard = ({ handleModal, anime, change }) => {
             className='object-contain rounded-xl border-2 border-amber-600'
           />
         </div>
-        <div className='flex  flex-col lg:flex-row justify-between items-center gap-5 mt-20'>
+        <div className='flex  flex-col lg:flex-row justify-between items-center gap-5 mt-8'>
           <button type='button' onClick={markComplete} className='flex justify-center item-center flex-row bg-green-500 p-3 rounded-lg'>
             <p className='text-white text-xl'> Completed</p>
             <IoCheckmarkDoneCircleOutline className='h-[30px] w-[30px] text-white mr-2' />
