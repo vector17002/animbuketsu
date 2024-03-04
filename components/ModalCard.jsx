@@ -1,6 +1,6 @@
-"use client"
-import React from 'react'
-import { useSession } from 'next-auth/react';
+"use client";
+import React from "react";
+import { useSession } from "next-auth/react";
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 import { MdDelete, MdDeleteOutline, MdLiveTv } from "react-icons/md";
 import { TbEyeCancel } from "react-icons/tb";
@@ -10,100 +10,110 @@ const ModalCard = ({ handleModal, anime, change }) => {
   const markComplete = async () => {
     try {
       await fetch(baseURL, {
-        method: 'POST',
+        method: "POST",
         body: JSON.stringify({
           id: anime._id,
-          status: 1
-        })
-      })
+          status: 1,
+        }),
+      });
     } catch (error) {
       console.log(error);
     } finally {
-      change('completed');
+      change("completed");
     }
-  }
+  };
   const markWatching = async () => {
     try {
       await fetch(baseURL, {
-        method: 'POST',
-        body: JSON.stringify(
-          {
-            id: anime._id,
-            status: 0,
-          }
-        )
-      })
+        method: "POST",
+        body: JSON.stringify({
+          id: anime._id,
+          status: 0,
+        }),
+      });
     } catch (error) {
       console.log(error);
     } finally {
-      change('watching')
+      change("watching");
     }
-  }
+  };
   const markDelete = async () => {
     try {
       await fetch(baseURL, {
-        method: 'POST',
-        body: JSON.stringify(
-          {
-            id: anime._id,
-            del: true
-          }
-        )
-      })
+        method: "POST",
+        body: JSON.stringify({
+          id: anime._id,
+          del: true,
+        }),
+      });
     } catch (error) {
       console.log(error);
     } finally {
-      change('watch later')
+      change("watch later");
     }
-  }
+  };
   const markLater = async () => {
     try {
       await fetch(baseURL, {
-        method: 'POST',
-        body: JSON.stringify(
-          {
-            id: anime._id,
-            status: -1
-          }
-        )
-      })
+        method: "POST",
+        body: JSON.stringify({
+          id: anime._id,
+          status: -1,
+        }),
+      });
     } catch (error) {
       console.log(error);
     } finally {
-      change('watch later')
+      change("watch later");
     }
-  }
+  };
   return (
     <div onClick={handleModal}>
-      <div className='w-[100vw] h-[100vh] top-0 bottom-0 left-0 right-0 flex justify-center items-center fixed flex flex-col'>
-        <div className='flex w-full justify-center items-center' v>
+      <div className="fixed bottom-0 left-0 right-0 top-0 flex flex h-[100vh] w-[100vw] flex-col items-center justify-center">
+        <div className="flex w-full items-center justify-center" v>
           <img
             src={anime.animeImg}
-            alt='image'
-            className='object-contain rounded-xl border-2 border-amber-600'
+            alt="image"
+            className="rounded-xl border-2 border-amber-600 object-contain"
           />
         </div>
-        <div className='flex flex-row justify-between items-center gap-5 mt-4'>
-          <button type='button' onClick={markComplete} className='flex justify-center item-center flex-row'>
-            <p className='text-zinc-500 text-xl'> Completed</p>
-            <IoCheckmarkDoneCircleOutline className='h-[30px] w-[30px] mr-2' />
+        <div className="mt-8 flex flex-col items-center justify-between gap-5 lg:flex-row">
+          <button
+            type="button"
+            onClick={markComplete}
+            className="item-center flex flex-row justify-center rounded-lg bg-green-500 p-3"
+          >
+            <p className="text-xl text-white"> Completed</p>
+            <IoCheckmarkDoneCircleOutline className="mr-2 h-[30px] w-[30px] text-white" />
           </button>
-          <button type='button' className='flex justify-center item-center flex-row' onClick={markWatching}>
-            <p className='text-zinc-500 text-xl'> Watching</p>
-            <MdLiveTv className='w-[30px] h-[30px] mr-2' />
+          <button
+            type="button"
+            className="item-center flex flex-row justify-center rounded-lg bg-blue-500 p-3"
+            onClick={markWatching}
+          >
+            <p className="text-xl text-white"> Watching</p>
+            <MdLiveTv className="mr-3 h-[30px] w-[30px] text-white" />
           </button>
-          <button type='button' className='flex justify-center item-center flex-row' onClick={markDelete}>
-            <p className='text-zinc-500 text-xl'>Remove</p>
-            <MdDeleteOutline className='w-[30px] h-[30px] mr-2' />
+          <button
+            type="button"
+            className="item-center flex flex-row justify-center rounded-lg bg-rose-500 p-3"
+            onClick={markDelete}
+          >
+            <p className="text-xl text-white">Remove</p>
+            <MdDeleteOutline className="mr-2 h-[30px] w-[30px] text-white" />
           </button>
-          <button type='button' className='flex justify-center item-center flex-row' onClick={markLater}>
-            <p className='text-zinc-500 text-xl'>Watch Later</p>
-            <TbEyeCancel className='w-[30px] h-[30px] mr-2' />
+          <button
+            type="button"
+            className="item-center flex flex-row justify-center rounded-lg bg-indigo-500 p-3"
+            onClick={markLater}
+          >
+            <p className="text-xl text-white">Watch Later</p>
+            <TbEyeCancel className="mr-2 h-[30px] w-[30px] text-white" />
           </button>
         </div>
       </div>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
-export default ModalCard
+export default ModalCard;
