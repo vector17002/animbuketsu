@@ -96,19 +96,19 @@ const ModalCard = ({ handleModal, anime, change }) => {
           </button>
           <button
             type="button"
-            className="item-center flex flex-row justify-center rounded-lg bg-rose-500 p-2 md:p-3"
-            onClick={markDelete}
-          >
-            <p className="text-xl text-white">Remove</p>
-            <MdDeleteOutline className="mr-2 hidden h-[30px] w-[30px] text-white md:flex" />
-          </button>
-          <button
-            type="button"
             className="item-center flex flex-row justify-center rounded-lg bg-indigo-500 p-2 md:p-3"
             onClick={markLater}
           >
             <p className="text-xl text-white">Watch Later</p>
             <TbEyeCancel className="mr-2 hidden h-[30px] w-[30px] text-white md:flex" />
+          </button>
+          <button
+            type="button"
+            className="item-center flex flex-row justify-center rounded-lg bg-rose-500 p-2 md:p-3"
+            onClick={markDelete}
+          >
+            <p className="text-xl text-white">Remove</p>
+            <MdDeleteOutline className="mr-2 hidden h-[30px] w-[30px] text-white md:flex" />
           </button>
         </div>
       </div>
