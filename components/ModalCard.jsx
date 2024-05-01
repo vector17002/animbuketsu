@@ -69,7 +69,7 @@ const ModalCard = ({ handleModal, anime, change }) => {
   };
   return (
     <div onClick={handleModal}>
-      <div className="fixed bottom-0 left-0 right-0 top-0 flex flex h-[100vh] w-[100vw] flex-col items-center justify-center">
+      <div className="fixed bottom-0 left-0 right-0 top-0 flex h-[100vh] w-[100vw] flex-col items-center justify-center">
         <div className="flex w-full items-center justify-center" v>
           <img
             src={anime.animeImg}
@@ -81,34 +81,34 @@ const ModalCard = ({ handleModal, anime, change }) => {
           <button
             type="button"
             onClick={markComplete}
-            className="item-center flex flex-row justify-center rounded-lg bg-green-500 p-3"
+            className="item-center flex flex-row justify-center rounded-lg bg-green-500 p-2 md:p-3"
           >
             <p className="text-xl text-white"> Completed</p>
-            <IoCheckmarkDoneCircleOutline className="mr-2 h-[30px] w-[30px] text-white" />
+            <IoCheckmarkDoneCircleOutline className="mr-2 hidden h-[30px] w-[30px] text-white md:flex" />
           </button>
           <button
             type="button"
-            className="item-center flex flex-row justify-center rounded-lg bg-blue-500 p-3"
+            className="item-center flex flex-row justify-center rounded-lg bg-blue-500 p-2 md:p-3"
             onClick={markWatching}
           >
             <p className="text-xl text-white"> Watching</p>
-            <MdLiveTv className="mr-3 h-[30px] w-[30px] text-white" />
+            <MdLiveTv className="mr-3 hidden h-[30px] w-[30px] text-white md:flex" />
           </button>
           <button
             type="button"
-            className="item-center flex flex-row justify-center rounded-lg bg-rose-500 p-3"
-            onClick={markDelete}
-          >
-            <p className="text-xl text-white">Remove</p>
-            <MdDeleteOutline className="mr-2 h-[30px] w-[30px] text-white" />
-          </button>
-          <button
-            type="button"
-            className="item-center flex flex-row justify-center rounded-lg bg-indigo-500 p-3"
+            className="item-center flex flex-row justify-center rounded-lg bg-indigo-500 p-2 md:p-3"
             onClick={markLater}
           >
             <p className="text-xl text-white">Watch Later</p>
-            <TbEyeCancel className="mr-2 h-[30px] w-[30px] text-white" />
+            <TbEyeCancel className="mr-2 hidden h-[30px] w-[30px] text-white md:flex" />
+          </button>
+          <button
+            type="button"
+            className="item-center flex flex-row justify-center rounded-lg bg-rose-500 p-2 md:p-3"
+            onClick={markDelete}
+          >
+            <p className="text-xl text-white">Remove</p>
+            <MdDeleteOutline className="mr-2 hidden h-[30px] w-[30px] text-white md:flex" />
           </button>
         </div>
       </div>

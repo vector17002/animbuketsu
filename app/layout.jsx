@@ -11,8 +11,8 @@ const RootLayout = ({ children }) => (
   <head>
   <link rel="shortcut icon" href="/assets/images/logo.svg" />
   </head>
+  <Provider>
     <body>
-      <Provider>
         <div className='main'>
           <div className='gradient'/>
         </div>
@@ -20,8 +20,8 @@ const RootLayout = ({ children }) => (
          <Nav/>
           {children}
         </main>
-        </Provider>
     </body>
+    </Provider>
   </html>
 );
 
