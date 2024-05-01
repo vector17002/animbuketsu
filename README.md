@@ -40,7 +40,6 @@ To run Anime Bucket locally, follow these steps:
 ## Live Demo
 <video src="https://github.com/vector17002/animbuketsu/assets/104789216/fc6f6239-3849-4048-b12f-061191186177"></video>
 
-<a href="https://animbuketsu.vercel.app" target="_blank">Live Url</a>
 
 
 
