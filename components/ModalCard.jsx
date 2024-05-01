@@ -83,26 +83,26 @@ const ModalCard = ({ handleModal, anime, change }) => {
             className='object-contain rounded-xl border-2 border-amber-600'
           />
         </div>
-        <div className='flex flex-row justify-between items-center gap-5 mt-4'>
-          <button type='button' onClick={markComplete} className='flex justify-center item-center flex-row'>
-            <p className='text-zinc-500 text-xl'> Completed</p>
-            <IoCheckmarkDoneCircleOutline className='h-[30px] w-[30px] mr-2' />
+        <div className='flex flex-col md:flex-row justify-between items-center gap-5  mt-5 md:mt-10'>
+          <button type='button' onClick={markComplete} className='flex justify-center item-center flex-row bg-green-400 rounded-lg p-2'>
+            <p className='text-black text-xl'> Completed</p>
+            <IoCheckmarkDoneCircleOutline className='h-[30px] w-[30px] mr-2 text-black' />
           </button>
-          <button type='button' className='flex justify-center item-center flex-row' onClick={markWatching}>
-            <p className='text-zinc-500 text-xl'> Watching</p>
-            <MdLiveTv className='w-[30px] h-[30px] mr-2' />
+          <button type='button' className='flex justify-center item-center flex-row bg-indigo-400 rounded-lg p-2' onClick={markWatching}>
+            <p className='text-black text-xl'> Watching</p>
+            <MdLiveTv className='w-[30px] h-[30px] mr-2 ' />
           </button>
-          <button type='button' className='flex justify-center item-center flex-row' onClick={markDelete}>
-            <p className='text-zinc-500 text-xl'>Remove</p>
+          <button type='button' className='flex justify-center item-center flex-row bg-rose-400 rounded-lg p-2' onClick={markDelete}>
+            <p className='text-black text-xl'>Remove</p>
             <MdDeleteOutline className='w-[30px] h-[30px] mr-2' />
           </button>
-          <button type='button' className='flex justify-center item-center flex-row' onClick={markLater}>
-            <p className='text-zinc-500 text-xl'>Watch Later</p>
+          <button type='button' className='flex justify-center item-center flex-row bg-blue-400 rounded-lg p-2' onClick={markLater}>
+            <p className='text-black text-xl'>Watch Later</p>
             <TbEyeCancel className='w-[30px] h-[30px] mr-2' />
           </button>
         </div>
       </div>
-    </div >
+    </div>
   )
 }
 
