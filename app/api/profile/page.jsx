@@ -21,10 +21,7 @@ const Wishes = ({ anime, modal, detail, idx }) => {
       <div>
         <p className="desc">
           <span className="orange_gradient font-extrabold">{idx + 1}. </span>
-          {anime.title_english
-            ? anime.animeName.substr(0, 15)
-            : anime.animeName.substr(0, 15)}
-          ..
+          {anime.animeName.substr(0, 15)}..
         </p>
       </div>
     </div>

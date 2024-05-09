@@ -12,6 +12,7 @@ const AnimeProfile = () => {
   const [added, setAdded] = useState(false);
   const router = useRouter();
   const addToList = async () => {
+    console.log(animeDetail)
     if (session) {
       try {
         const response = await fetch("/api/profile/add", {
@@ -19,8 +20,8 @@ const AnimeProfile = () => {
           body: JSON.stringify({
             userId: session?.user.id,
             animeImg: animeDetail.images.jpg.image_url,
-            animeName: animeDetail.title_english,
-            episodes: animeDetail.episodes,
+            animeName: (animeDetail.title_english? animeDetail.title_english : animeDetail.title),
+            episodes: animeDetail.episodes? animeDetail.episodes : 0,
           }),
         });
         if (response.ok) {
