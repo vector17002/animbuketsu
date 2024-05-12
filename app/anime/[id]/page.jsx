@@ -4,6 +4,7 @@ import Loading from "@utils/Loading";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 const AnimeProfile = () => {
   const baseUrl = "https://api.jikan.moe/v4";
   const url = location.pathname;
@@ -25,13 +26,14 @@ const AnimeProfile = () => {
           }),
         });
         if (response.ok) {
+          toast.success("Added to wish list")
           setAdded(true);
         }
       } catch (error) {
         console.log(error);
       }
     } else {
-      alert("Please login first");
+      toast.error("Please login first");
       router.push("/");
     }
   };
@@ -45,23 +47,6 @@ const AnimeProfile = () => {
         console.log(error);
         location.reload();
       }
-    };
-    const checkAdded = async () => {
-      try {
-        console.log(animeDetail.title_english);
-        const response = await (
-          await fetch(`/api/profile/${session?.user.id}/list`)
-        )
-          .json()
-          .then((res) => {
-            return res;
-          })
-          .catch((error) => console.log(error));
-      } catch (error) {
-        console.log(error);
-        return false;
-      }
-      return false;
     };
     getDetails();
   }, []);

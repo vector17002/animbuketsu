@@ -19,7 +19,7 @@ const ModalCard = ({ handleModal, anime, change }) => {
     } catch (error) {
       console.log(error);
     } finally {
-      change('completed');
+      change('completed' , 0);
     }
   }
   const markWatching = async () => {
@@ -36,7 +36,7 @@ const ModalCard = ({ handleModal, anime, change }) => {
     } catch (error) {
       console.log(error);
     } finally {
-      change('watching')
+      change('watching' , 0)
     }
   }
   const markDelete = async () => {
@@ -53,7 +53,7 @@ const ModalCard = ({ handleModal, anime, change }) => {
     } catch (error) {
       console.log(error);
     } finally {
-      change('watch later')
+      change('watch later' , 1)
     }
   }
   const markLater = async () => {
@@ -70,7 +70,7 @@ const ModalCard = ({ handleModal, anime, change }) => {
     } catch (error) {
       console.log(error);
     } finally {
-      change('watch later')
+      change('watch later' , 0)
     }
   }
   return (

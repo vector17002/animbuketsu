@@ -4,6 +4,7 @@ import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import React, { useEffect, useState } from "react";
 import ModalCard from "@components/ModalCard";
+import toast from "react-hot-toast";
 const Wishes = ({ anime, modal, detail, idx }) => {
 
   const handleModal = () => {
@@ -75,7 +76,11 @@ const Profile = () => {
   const handleDropdown = (e) => {
     setCategory(e.target.value);
   };
-  const handleChange = (value) => {
+  const handleChange = async (value , del) => {
+    if(!del)
+    toast.success("Added anime to " +  value)
+    else
+   toast.success("Removed succesfully")
     setCategory(value);
   };
   const handleModal = () => {
@@ -83,7 +88,6 @@ const Profile = () => {
   };
   const getDetail = (value) => {
     setModalDetail(value);
-
   }
   return (<>
     {modal ? (<ModalCard handleModal={handleModal} anime={modalDetail} change={handleChange} />) : (

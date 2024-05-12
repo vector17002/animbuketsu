@@ -2,6 +2,7 @@ import "@styles/globals.css";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Nav from "@components/Nav";
 import Provider from "@components/Provider";
+import { Toaster } from "react-hot-toast";
 export const metadata = {
   title: "AniBuketsu",
   description: "Discover and manage your favourite anime",
@@ -18,6 +19,7 @@ const RootLayout = ({ children }) => (
           <div className='gradient'/>
         </div>
         <main className='app'>
+        <Toaster/>
          <Nav/>
           {children}
           <SpeedInsights />
