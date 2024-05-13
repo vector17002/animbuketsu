@@ -2,6 +2,7 @@ import NextAuth from "next-auth";
 import GoogleProvider from 'next-auth/providers/google';
 import { connectToDB } from "@utils/database";
 import User from "@models/user";
+import toast from "react-hot-toast";
 const handler = NextAuth({
     providers : [
         GoogleProvider({
@@ -21,11 +22,11 @@ const handler = NextAuth({
             try {
               //serverless route -> lamda function
               await connectToDB();
-      
               //check if a user already exist
                const userExist = await User.findOne({
                   email: profile.email
                });
+               
               //if not create a new user
               if(!userExist){
                   await User.create({

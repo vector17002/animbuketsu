@@ -80,7 +80,7 @@ const Profile = () => {
     if(!del)
     toast.success("Added anime to " +  value)
     else
-   toast.success("Removed succesfully")
+   toast.success("Removed from bucket succesfully")
     setCategory(value);
   };
   const handleModal = () => {

@@ -26,11 +26,14 @@ const AnimeProfile = () => {
           }),
         });
         if (response.ok) {
-          toast.success("Added to wish list")
+          toast.success("Added to your bucket")
           setAdded(true);
         }
+        else{
+          toast.error("Already added to your bucket");
+        }
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
     } else {
       toast.error("Please login first");

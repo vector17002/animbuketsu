@@ -22,7 +22,6 @@ const RootLayout = ({ children }) => (
         <Toaster/>
          <Nav/>
           {children}
-          <SpeedInsights />
         </main>
     </body>
     </Provider>

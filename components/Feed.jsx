@@ -4,6 +4,7 @@ import React , {useState , useEffect} from 'react'
 import Footer from './Footer';
 import {MdChevronLeft , MdChevronRight} from 'react-icons/md'
 import RandomGenerator from './RandomGenerator';
+import toast from 'react-hot-toast';
 const Feed = () => {
   const baseUrl ='https://api.jikan.moe/v4';
   const [popular , setPopular] = useState(null);
@@ -17,27 +18,32 @@ const Feed = () => {
         setPopularLoading(true);
          const response = await fetch(`${baseUrl}/top/anime?filter=bypopularity`);
          const obj = await response.json();
+        console.log(obj.paginations)
          setPopular(obj.data);
       } catch (error) {
          console.log(error);
-         alert('Oops we are out of api requests');
+         toast.error('Oops we are out of api requests');
       }   
       finally{
         setPopularLoading(false);
       }
     }
-    const getNews = async () => {
+    const getTop = async () => {
         try {
           const res = await fetch(`https://api.jikan.moe/v4/top/anime`)
           const obj = await res.json();
           setNews(obj.data);
-          console.log(news);
         } catch (error) {
+          toast.error('Oops we are out of api requests');
           console.log(error);
         }
     }
-    getPopular();  
-    getNews();
+    getPopular(); 
+    setTimeout(() => {
+      //solving for too many requests to the api server
+      getTop();
+    } , 1500) 
+    
   },[])
   const handleSearch = (e) =>{
      setSearchText(e.target.value)
@@ -51,6 +57,7 @@ const Feed = () => {
       console.log(searchResult)
     }
     catch(error){
+      toast.error('Couldn\'t find search term');
       console.log(error);
     }
   }
