@@ -39,10 +39,14 @@ const Feed = () => {
         }
     }
     getPopular(); 
+    if(process.env.NEXT_DEVELOPMENT){
     setTimeout(() => {
       //solving for too many requests to the api server
       getTop();
     } , 1500) 
+  }
+  else
+  getTop();
     
   },[])
   const handleSearch = (e) =>{
