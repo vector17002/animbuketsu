@@ -9,8 +9,9 @@ const Feed = () => {
   const baseUrl ='https://api.jikan.moe/v4';
   const [popular , setPopular] = useState(null);
   const [popularLoading , setPopularLoading] = useState(false);
-  const [news , setNews] = useState(null);
   const [searchText , setSearchText] = useState('');
+  const [top , setTop] = useState(null)
+  const [topLoading , setTopLoading] = useState(false)
   const [searchResult , setSearchResult] = useState(null);
   useEffect(()=>{
     const getPopular = async ()=>{
@@ -28,26 +29,23 @@ const Feed = () => {
         setPopularLoading(false);
       }
     }
-    const getTop = async () => {
-        try {
-          const res = await fetch(`https://api.jikan.moe/v4/top/anime`)
-          const obj = await res.json();
-          setNews(obj.data);
-        } catch (error) {
-          toast.error('Oops we are out of api requests');
-          console.log(error);
-        }
+    const getTop = async () =>{
+      try {
+        setTopLoading(true);
+         const response = await fetch(`${baseUrl}/top/anime`);
+         const obj = await response.json();
+         setTop(obj.data);
+      } catch (error) {
+         toast.error('Oops we are out of api requests');
+      }   
+      finally{
+        setTopLoading(false);
+      }
     }
-    getPopular(); 
-    if(process.env.NEXT_DEVELOPMENT){
+    getPopular();
     setTimeout(() => {
-      //solving for too many requests to the api server
-      getTop();
-    } , 1500) 
-  }
-  else
-  getTop();
-    
+        getTop();
+    }, 2000)
   },[])
   const handleSearch = (e) =>{
      setSearchText(e.target.value)
@@ -119,21 +117,21 @@ const Feed = () => {
         </div>
         )}
     </div>
-    {/* Top results */}
-    <div className='w-full flex-col mt-10'>
-        <p className='orange_gradient subhead_text ml-4'>Top Animes</p>
-        {popularLoading? ( 
+    {/* Top rated */}
+    <div className='w-full h-full flex-col mt-10'>
+        <p className='orange_gradient subhead_text ml-4'>Top Picks</p>
+        {topLoading? ( 
         <div className='flex-center mb-10'>
     <img src='/assets/icons/loader.svg' alt='loading' className='w-20 h-20 object-contain'/>
   </div>) : (
-        <div className='relative flex items-center mb-10'>
+        <div className='relative flex items-center'>
         <MdChevronLeft size={40} />
-        <div className='flex flex-row w-[100vw] h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
-            {news?.map((anime , idx) => (
+        <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
+            {top?.map((anime , idx) => (
               <Card anime={anime} key={idx} idx={idx}/>
             ))}
             </div>
-            <MdChevronRight size={40} />
+          <MdChevronRight size={40} />
         </div>
         )}
     </div>

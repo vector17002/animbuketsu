@@ -1,8 +1,9 @@
 import { BrowserView, MobileView } from "react-device-detect";
 const Loading = () => {
   return (
-    <> <BrowserView>
-    <div className="w-full h-full sm:flex xs:flex-row  justify-betweem p-3 m-3 gap-3">
+    <>
+    <BrowserView>
+    <div className="w-full h-full sm:flex xs:flex-row justify-betweem p-3 m-3 gap-3 items-center justify-center max-w-[90vw]">
     <div className='min-w-[250px] min-h-[300px] max-h-[300px]  backdrop-blur-lg bg-black/20 rounded-xl border-2 border-white'>
     </div>
     <div className='min-w-[400px] min-h-[500px]  backdrop-blur-lg bg-black/20 rounded-xl border-2 border-white'>

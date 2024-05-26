@@ -20,7 +20,7 @@ const RootLayout = ({ children }) => (
         </div>
         <main className='app'>
         <Toaster/>
-         <Nav/>
+        <Nav/>
           {children}
         </main>
     </body>
