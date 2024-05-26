@@ -43,9 +43,7 @@ const Feed = () => {
       }
     }
     getPopular();
-    setTimeout(() => {
-        getTop();
-    }, 2000)
+    getTop();
   },[])
   const handleSearch = (e) =>{
      setSearchText(e.target.value)

@@ -19,7 +19,7 @@ const AnimeCard = ({ animeDetail, handleAdd, added }) => {
   return (
     <div className='w-full h-full flex flex-col justify-center items-center'>
       <div className="w-full h-full sm:flex xs:flex-row justify-between p-3 m-3">
-        <div className='flex flex-col gap-5 items-center px-2 m-2 rounded-xl glassmorphism max-h-[60vh] min-h-[50vh]'>
+        <div className='flex flex-col gap-5 items-center px-2 m-2 rounded-xl glassmorphism md:max-h-[60vh] min-h-[50vh]'>
           <Image
             src={animeDetail.images.jpg.image_url}
             alt='image'
@@ -67,7 +67,7 @@ const AnimeCard = ({ animeDetail, handleAdd, added }) => {
             </div>
           ) : (<></>)}
         </div>
-        <div className='flex flex-col gap-10 glassmorphism rounded-xl m-2 p-3 text-gray-600 font-bold text-[14px] max-h-[50vh] min-h-[50vh] max-w-[20vw] min-w-[20vw]'>
+        <div className='flex flex-col gap-10 glassmorphism rounded-xl m-2 p-3 text-gray-600 font-bold text-[14px] md:max-h-[50vh] min-h-[50vh] md:max-w-[20vw] min-w-[20vw]'>
           <p><span className='orange_gradient'> Title: </span> {animeDetail.title}</p>
           <p><span className='orange_gradient'> Year: </span>  {animeDetail.year ? animeDetail.year : animeDetail.aired.from.substr(0, 4)}</p>
           <p><span className='orange_gradient'> Season: </span> {animeDetail.season ? animeDetail.season : '0'}</p>
