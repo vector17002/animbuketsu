@@ -91,7 +91,7 @@ const Feed = () => {
         <div className='relative flex items-center'>
         <div className='flex flex-row w-[100vw] h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-3 m-3'>
             {searchResult?.map((anime , idx) => (
-              <DirectionAwareHover imageUrl={anime.images.jpg.image_url} id={anime.mal_id}>
+              <DirectionAwareHover imageUrl={anime.images.jpg.image_url} id={anime.mal_id} key={idx}>
               <div className='bg-white p-1 rounded-full w-8 flex justify-center items-center'>
               <p className='font-extrabold orange_gradient'>{idx+1}</p></div>
               <p className='text-white font-semibold'>{anime.title_english? anime.title_english : anime.title}</p>
@@ -116,7 +116,7 @@ const Feed = () => {
         <div className='relative flex items-center'>
         <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-3 m-3'>
             {popular?.map((anime , idx) => (
-              <DirectionAwareHover imageUrl={anime.images.jpg.image_url} id={anime.mal_id}>
+              <DirectionAwareHover imageUrl={anime.images.jpg.image_url} id={anime.mal_id} key={idx}>
               <div className='bg-white p-1 rounded-full w-8 flex justify-center items-center'>
               <p className='font-extrabold orange_gradient'>{idx+1}</p></div>
               <p className='text-white font-semibold'>{anime.title_english? anime.title_english : anime.title}</p>
@@ -141,7 +141,7 @@ const Feed = () => {
         <div className='relative flex items-center'>
         <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-3 m-3'>
             {top?.map((anime , idx) => (
-              <DirectionAwareHover imageUrl={anime.images.jpg.image_url} id={anime.mal_id}>
+              <DirectionAwareHover imageUrl={anime.images.jpg.image_url} id={anime.mal_id} key={idx}>
               <div className='bg-white p-1 rounded-full w-8 flex justify-center items-center'>
               <p className='font-extrabold orange_gradient'>{idx+1}</p></div>
               <p className='text-white font-semibold'>{anime.title_english? anime.title_english : anime.title}</p>
