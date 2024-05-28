@@ -114,7 +114,7 @@ const Profile = () => {
           ) : (
             <div className='relative flex items-center mb-10'>
               {(anime?.length !== 0) ? (<>
-                <div className='flex flex-row min-w-[80vw] max-w-[80vw] h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-2'>
+                <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-2'>
                 {/* <div className="w-[100vw] flex flex-wrap grid-rows-5 justify-center items-center"> */}
                   {anime?.map((anime, idx) => (
                     <Wishes key={idx} anime={anime} idx={idx} change={handleChange} modal={handleModal} detail={getDetail} />
