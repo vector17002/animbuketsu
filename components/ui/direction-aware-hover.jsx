@@ -56,14 +56,14 @@ export const DirectionAwareHover = ({
   }
   return (
     <motion.div
-      onTouchStart={handleMouseEnter}
+      onTap={handleMouseEnter}
       onHoverStart={handleMouseEnter}
       ref={ref}
       className={cn(
         "min-w-[40vw] md:min-w-[15vw] h-[40vh] bg-transparent rounded-lg overflow-hidden group/card relative",
       )}
-      onClick={(e) => handleRoute()} 
-    >
+      onDoubleClick={(e) => handleRoute()} 
+       >
       <AnimatePresence mode="wait">
         <motion.div
           className="relative h-full w-full"

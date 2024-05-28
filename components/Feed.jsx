@@ -93,11 +93,11 @@ const Feed = () => {
             {searchResult?.map((anime , idx) => (
               <DirectionAwareHover imageUrl={anime.images.jpg.image_url} id={anime.mal_id} key={idx}>
               <div className='bg-white p-1 rounded-full w-8 flex justify-center items-center'>
-              <p className='font-extrabold orange_gradient'>{idx+1}</p></div>
-              <p className='text-white font-semibold'>{anime.title_english? anime.title_english : anime.title}</p>
+              <p className='font-extrabold orange_gradient text-sm md:text-md'>{idx+1}</p></div>
+              <p className='text-white font-semibold text-sm md:text-md'>{anime.title_english? anime.title_english : anime.title}</p>
               <div className='flex flex-row gap-2 flex-wrap'>{anime.genres.map((genre , idx) => ( 
                 <div className='bg-white p-1 rounded-lg' key={idx}>
-                <p className='text-xs blue_gradient font-extrabold'>{genre.name}</p>
+                <p className='text-xs blue_gradient md:font-extrabold'>{genre.name}</p>
                 </div>
               ))}</div>
                </DirectionAwareHover>
@@ -118,11 +118,11 @@ const Feed = () => {
             {popular?.map((anime , idx) => (
               <DirectionAwareHover imageUrl={anime.images.jpg.image_url} id={anime.mal_id} key={idx}>
               <div className='bg-white p-1 rounded-full w-8 flex justify-center items-center'>
-              <p className='font-extrabold orange_gradient'>{idx+1}</p></div>
-              <p className='text-white font-semibold'>{anime.title_english? anime.title_english : anime.title}</p>
+              <p className='font-extrabold orange_gradient text-sm md:text-md'>{idx+1}</p></div>
+              <p className='text-white font-semibold text-sm md:text-md'>{anime.title_english? anime.title_english : anime.title}</p>
               <div className='flex flex-row gap-2 flex-wrap'>{anime.genres.map((genre , idx) => ( 
                 <div className='bg-white p-1 rounded-lg' key={idx}>
-                <p className='text-xs blue_gradient font-extrabold'>{genre.name}</p>
+                <p className='text-xs blue_gradient md:font-extrabold'>{genre.name}</p>
                 </div>
               ))}</div>
                </DirectionAwareHover>
@@ -143,11 +143,11 @@ const Feed = () => {
             {top?.map((anime , idx) => (
               <DirectionAwareHover imageUrl={anime.images.jpg.image_url} id={anime.mal_id} key={idx}>
               <div className='bg-white p-1 rounded-full w-8 flex justify-center items-center'>
-              <p className='font-extrabold orange_gradient'>{idx+1}</p></div>
-              <p className='text-white font-semibold'>{anime.title_english? anime.title_english : anime.title}</p>
+              <p className='font-extrabold orange_gradient text-sm md:text-md'>{idx+1}</p></div>
+              <p className='text-white font-semibold text-sm md:text-md'>{anime.title_english? anime.title_english : anime.title}</p>
               <div className='flex flex-row gap-2 flex-wrap'>{anime.genres.map((genre , idx) => ( 
                 <div className='bg-white p-1 rounded-lg' key={idx}>
-                <p className='text-xs blue_gradient font-extrabold'>{genre.name}</p>
+                <p className='text-xs blue_gradient md:font-extrabold'>{genre.name}</p>
                 </div>
               ))}</div>
                </DirectionAwareHover>
