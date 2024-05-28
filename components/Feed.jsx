@@ -95,8 +95,8 @@ const Feed = () => {
               <div className='bg-white p-1 rounded-full w-8 flex justify-center items-center'>
               <p className='font-extrabold orange_gradient'>{idx+1}</p></div>
               <p className='text-white font-semibold'>{anime.title_english? anime.title_english : anime.title}</p>
-              <div className='flex flex-row gap-2 flex-wrap'>{anime.genres.map((genre) => ( 
-                <div className='bg-white p-1 rounded-lg'>
+              <div className='flex flex-row gap-2 flex-wrap'>{anime.genres.map((genre , idx) => ( 
+                <div className='bg-white p-1 rounded-lg' key={idx}>
                 <p className='text-xs blue_gradient font-extrabold'>{genre.name}</p>
                 </div>
               ))}</div>
@@ -120,8 +120,8 @@ const Feed = () => {
               <div className='bg-white p-1 rounded-full w-8 flex justify-center items-center'>
               <p className='font-extrabold orange_gradient'>{idx+1}</p></div>
               <p className='text-white font-semibold'>{anime.title_english? anime.title_english : anime.title}</p>
-              <div className='flex flex-row gap-2 flex-wrap'>{anime.genres.map((genre) => ( 
-                <div className='bg-white p-1 rounded-lg'>
+              <div className='flex flex-row gap-2 flex-wrap'>{anime.genres.map((genre , idx) => ( 
+                <div className='bg-white p-1 rounded-lg' key={idx}>
                 <p className='text-xs blue_gradient font-extrabold'>{genre.name}</p>
                 </div>
               ))}</div>
@@ -145,8 +145,8 @@ const Feed = () => {
               <div className='bg-white p-1 rounded-full w-8 flex justify-center items-center'>
               <p className='font-extrabold orange_gradient'>{idx+1}</p></div>
               <p className='text-white font-semibold'>{anime.title_english? anime.title_english : anime.title}</p>
-              <div className='flex flex-row gap-2 flex-wrap'>{anime.genres.map((genre) => ( 
-                <div className='bg-white p-1 rounded-lg'>
+              <div className='flex flex-row gap-2 flex-wrap'>{anime.genres.map((genre , idx) => ( 
+                <div className='bg-white p-1 rounded-lg' key={idx}>
                 <p className='text-xs blue_gradient font-extrabold'>{genre.name}</p>
                 </div>
               ))}</div>
