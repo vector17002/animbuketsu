@@ -56,7 +56,7 @@ export const DirectionAwareHover = ({
   }
   return (
     <motion.div
-     onTouchStart={handleMouseEnter}
+      onTouchStart={handleMouseEnter}
       onHoverStart={handleMouseEnter}
       ref={ref}
       className={cn(
@@ -69,6 +69,7 @@ export const DirectionAwareHover = ({
           className="relative h-full w-full"
           initial="initial"
           whileHover={direction}
+          whileFocus={direction}
           exit="exit"
         >
           <motion.div className="group-hover/card:block hidden absolute inset-0 w-full h-full bg-black/40 z-10 transition duration-500" />
