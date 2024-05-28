@@ -13,8 +13,8 @@ const RandomGenerator = () => {
     setLoading(false);
   };
   return (
-    <div className="m-10 mt-5 h-full w-[100vw] bg-generator lg:h-[400px] bg-no-repeat bg-cover">
-      <div className="flex h-full w-full flex-col items-center justify-evenly lg:flex-row lg:bg-white/30 lg:backdrop-blur-md">
+    <div className="m-10 mt-5 h-full w-[100vw] md:bg-generator lg:h-[400px] bg-no-repeat bg-cover">
+      <div className="flex h-full w-full flex-col items-center justify-evenly lg:flex-row md:bg-white/30 md:backdrop-blur-md">
         <div className="w-50 m-4 flex h-full flex-col items-center justify-center">
           <p className="head_text orange_gradient">Random anime generator</p>
           <p className="subhead_text mt-0 text-black">
@@ -30,15 +30,15 @@ const RandomGenerator = () => {
         </div>
         <div className="w-50 flex h-full items-center">
           {anime ? (
-            <div className="w-[250px]">
+            <div className="w-full">
               {loading ? (
                 <img src="/assets/images/generatloading2.gif" alt="loading" />
               ) : (
-                <div className="h-full w-[250px] rounded-lg lg:bg-white">
+                <div className="h-full rounded-lg lg:bg-white">
                 <DirectionAwareHover imageUrl={anime.images.jpg.image_url} id={anime.mal_id}>
               <p className='text-white font-semibold'>{anime.title_english? anime.title_english : anime.title}</p>
-              <div className='flex flex-row gap-2 flex-wrap'>{anime.genres.map((genre) => ( 
-                <div className='bg-white p-1 rounded-lg'>
+              <div className='flex flex-row gap-2 flex-wrap'>{anime.genres.map((genre , idx) => ( 
+                <div className='bg-white p-1 rounded-lg' key={idx}>
                 <p className='text-xs blue_gradient font-extrabold'>{genre.name}</p>
                 </div>
               ))}</div>

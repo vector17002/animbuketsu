@@ -117,7 +117,7 @@ const Profile = () => {
                 <div className='flex flex-row min-w-[80vw] max-w-[80vw] h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-2'>
                 {/* <div className="w-[100vw] flex flex-wrap grid-rows-5 justify-center items-center"> */}
                   {anime?.map((anime, idx) => (
-                    <Wishes key={anime.animeName} anime={anime} idx={idx} change={handleChange} modal={handleModal} detail={getDetail} />
+                    <Wishes key={idx} anime={anime} idx={idx} change={handleChange} modal={handleModal} detail={getDetail} />
                   ))}
                 </div>
                 </>) : ( <div className="flex w-full h-full justify-center items-center m-10"><p className="head_text text-center text-rose-400">Looks like your bucket is empty</p> </div>)}
