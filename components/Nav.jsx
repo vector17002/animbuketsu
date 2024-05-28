@@ -1,9 +1,11 @@
-'use client';
+'use client'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState , useEffect } from 'react'
 import {signIn , signOut , useSession , getProviders} from 'next-auth/react'
+import { useRouter } from 'next/navigation';
 const Nav = () => {
+  const router = useRouter()
   const { data: session} = useSession();
   const [providers , setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
@@ -14,9 +16,13 @@ const Nav = () => {
       }
       setProvider();
   } , [])
+
+  const handleRoute = async () =>{
+    await router.back()
+  }
   return (
     <nav className='flex-between w-full mb-10 pt-3 xs:glassmorphism'>
-       <Link href='/' className='flex gap-2 flex-center'>
+       <div className='flex gap-2 flex-center' onClick={(e) => handleRoute()}>
         <Image
           src='/assets/images/logo.svg'
           alt='logo'
@@ -25,7 +31,7 @@ const Nav = () => {
           className='object-contain'
         />
         <p className='logo_text'>AniBuketsu</p>
-      </Link>
+      </div>
       {/* Desktop Navigation */}
       <div className='sm:flex hidden'>
         {session?.user ? (

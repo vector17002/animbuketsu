@@ -4,7 +4,7 @@ import Loading from "@utils/Loading";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
-import ReCard from "@utils/RecommendedCard";
+import { DirectionAwareHover } from "@components/ui/direction-aware-hover";
 const AnimeProfile = () => {
   const baseUrl = "https://api.jikan.moe/v4";
   const url = location.pathname;
@@ -57,13 +57,14 @@ const AnimeProfile = () => {
         const obj = await response.json();
         setSimilar(obj.data)
       }catch(error){
+        console.log(error)
         toast.error("Oops something wrong happened")
       }finally{
         setSimilarLoading(false)
       }
     }
     getDetails();
-    getSimilar()
+    getSimilar();
   }, [url]);
   return (
     <div className="mb-5 mt-5 flex flex-col items-center justify-center">
@@ -79,6 +80,7 @@ const AnimeProfile = () => {
             <Loading />
           </div>
         )}
+        {similar && (
         <div className='w-full h-full flex-col mt-10'>
         <p className='blue_gradient subhead_text ml-4 mb-3'>Recommendations For You</p>
         {similarLoading? ( 
@@ -86,14 +88,19 @@ const AnimeProfile = () => {
     <img src='/assets/icons/loader.svg' alt='loading' className='w-20 h-20 object-contain'/>
   </div>) : (
         <div className='relative flex items-center'>
-        <div className='flex flex-row min-w-[90vw] max-w-[90vw] h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
+        <div className='flex flex-row min-w-[90vw] max-w-[90vw] h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-3 m-3'>
             {similar?.map((anime , idx) => (
-              <ReCard anime={anime} key={idx} idx={idx}/>
+              <DirectionAwareHover imageUrl={anime.entry.images.jpg.image_url} id={anime.entry.mal_id}>
+              <div className='bg-white p-1 rounded-full w-8 flex justify-center items-center'>
+              <p className='font-extrabold orange_gradient'>{idx+1}</p></div>
+              <p className='text-white font-semibold'>{anime.entry.title_english? anime.entry.title_english : anime.entry.title}</p>
+              <div className="text-xs font-extrabold bg-white p-1 flex justify-center items-center w-20 rounded-lg"> <p className="blue_gradient">Votes: <span className="font-semibold text-rose-500">{anime.votes}</span></p></div>
+               </DirectionAwareHover>
             ))}
             </div>
         </div>
         )}
-    </div>
+    </div>)}
         </div>
       </div>
   );

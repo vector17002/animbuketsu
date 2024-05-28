@@ -85,20 +85,16 @@ const ModalCard = ({ handleModal, anime, change }) => {
         </div>
         <div className='flex flex-col md:flex-row justify-between items-center gap-5  mt-5 md:mt-10'>
           <button type='button' onClick={markComplete} className='flex justify-center item-center flex-row bg-green-400 rounded-lg p-2'>
-            <p className='text-black text-xl'> Completed</p>
-            <IoCheckmarkDoneCircleOutline className='h-[30px] w-[30px] mr-2 text-black' />
+            <p className='text-white text-xl font-extrabold'> Completed</p>
           </button>
           <button type='button' className='flex justify-center item-center flex-row bg-indigo-400 rounded-lg p-2' onClick={markWatching}>
-            <p className='text-black text-xl'> Watching</p>
-            <MdLiveTv className='w-[30px] h-[30px] mr-2 ' />
+            <p className='text-white text-xl font-extrabold'> Mark Watching</p>
           </button>
           <button type='button' className='flex justify-center item-center flex-row bg-rose-400 rounded-lg p-2' onClick={markDelete}>
-            <p className='text-black text-xl'>Remove</p>
-            <MdDeleteOutline className='w-[30px] h-[30px] mr-2' />
+            <p className='text-white text-xl font-extrabold'>Drop</p>
           </button>
           <button type='button' className='flex justify-center item-center flex-row bg-blue-400 rounded-lg p-2' onClick={markLater}>
-            <p className='text-black text-xl'>Watch Later</p>
-            <TbEyeCancel className='w-[30px] h-[30px] mr-2' />
+            <p className='text-white text-xl font-extrabold'>Watch Later</p>
           </button>
         </div>
       </div>

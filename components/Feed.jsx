@@ -5,6 +5,8 @@ import Footer from './Footer';
 import {MdChevronLeft , MdChevronRight} from 'react-icons/md'
 import RandomGenerator from './RandomGenerator';
 import toast from 'react-hot-toast';
+import { DirectionAwareHover } from './ui/direction-aware-hover';
+import Image from 'next/image';
 const Feed = () => {
   const baseUrl ='https://api.jikan.moe/v4';
   const [popular , setPopular] = useState(null);
@@ -79,7 +81,7 @@ const Feed = () => {
         <button
           type='submit'
           className='submit_btn peer-focus:border-gray-700 peer-focus:text-gray-700'>
-            <img src='/assets/icons/tick.svg'/>
+            <Image src='/assets/icons/tick.svg' height={20} width={20}/>
         </button>
       </form>
       {/* Search result  */}
@@ -87,13 +89,20 @@ const Feed = () => {
         <div className='w-full flex-col mt-10'>
         <p className='orange_gradient subhead_text ml-4'>Based on your search</p>
         <div className='relative flex items-center'>
-        <MdChevronLeft size={40} />
-        <div className='flex flex-row w-[100vw] h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
+        <div className='flex flex-row w-[100vw] h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-3 m-3'>
             {searchResult?.map((anime , idx) => (
-              <Card anime={anime} key={idx} idx={idx}/>
+              <DirectionAwareHover imageUrl={anime.images.jpg.image_url} id={anime.mal_id}>
+              <div className='bg-white p-1 rounded-full w-8 flex justify-center items-center'>
+              <p className='font-extrabold orange_gradient'>{idx+1}</p></div>
+              <p className='text-white font-semibold'>{anime.title_english? anime.title_english : anime.title}</p>
+              <div className='flex flex-row gap-2 flex-wrap'>{anime.genres.map((genre) => ( 
+                <div className='bg-white p-1 rounded-lg'>
+                <p className='text-xs blue_gradient font-extrabold'>{genre.name}</p>
+                </div>
+              ))}</div>
+               </DirectionAwareHover>
             ))}
             </div>
-          <MdChevronRight size={40} />
         </div>
     </div>
       ) : (<></>)}
@@ -105,13 +114,20 @@ const Feed = () => {
     <img src='/assets/icons/loader.svg' alt='loading' className='w-20 h-20 object-contain'/>
   </div>) : (
         <div className='relative flex items-center'>
-        <MdChevronLeft size={40} />
-        <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
+        <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-3 m-3'>
             {popular?.map((anime , idx) => (
-              <Card anime={anime} key={idx} idx={idx}/>
+              <DirectionAwareHover imageUrl={anime.images.jpg.image_url} id={anime.mal_id}>
+              <div className='bg-white p-1 rounded-full w-8 flex justify-center items-center'>
+              <p className='font-extrabold orange_gradient'>{idx+1}</p></div>
+              <p className='text-white font-semibold'>{anime.title_english? anime.title_english : anime.title}</p>
+              <div className='flex flex-row gap-2 flex-wrap'>{anime.genres.map((genre) => ( 
+                <div className='bg-white p-1 rounded-lg'>
+                <p className='text-xs blue_gradient font-extrabold'>{genre.name}</p>
+                </div>
+              ))}</div>
+               </DirectionAwareHover>
             ))}
             </div>
-          <MdChevronRight size={40} />
         </div>
         )}
     </div>
@@ -123,16 +139,24 @@ const Feed = () => {
     <img src='/assets/icons/loader.svg' alt='loading' className='w-20 h-20 object-contain'/>
   </div>) : (
         <div className='relative flex items-center'>
-        <MdChevronLeft size={40} />
-        <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
+        <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-3 m-3'>
             {top?.map((anime , idx) => (
-              <Card anime={anime} key={idx} idx={idx}/>
+              <DirectionAwareHover imageUrl={anime.images.jpg.image_url} id={anime.mal_id}>
+              <div className='bg-white p-1 rounded-full w-8 flex justify-center items-center'>
+              <p className='font-extrabold orange_gradient'>{idx+1}</p></div>
+              <p className='text-white font-semibold'>{anime.title_english? anime.title_english : anime.title}</p>
+              <div className='flex flex-row gap-2 flex-wrap'>{anime.genres.map((genre) => ( 
+                <div className='bg-white p-1 rounded-lg'>
+                <p className='text-xs blue_gradient font-extrabold'>{genre.name}</p>
+                </div>
+              ))}</div>
+               </DirectionAwareHover>
             ))}
             </div>
-          <MdChevronRight size={40} />
         </div>
         )}
     </div>
+    <div className='w-full flex flex-row justify-start ml-10 mt-5 mb-5'><Image src='/assets/images/sharebg.gif' width={80} height={80} className='object-cover rounded-full'/> <div className='w-full flex flex-col justify-center ml-2'> <p className='orange_gradient font-extrabold'>Share Animebucket</p> <p className='text-sm font-semibold text-slate-500'> To your friends</p> </div></div>
     <RandomGenerator/>
     <Footer className='mt-16'/>
     </div>

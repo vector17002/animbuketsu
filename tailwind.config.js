@@ -22,7 +22,7 @@ module.exports = {
       },
       backgroundImage:{
         'footer-image' :"url('/assets/images/banner.jpg')",
-        'generator' : "url('/assets/images/generatebg3.gif')",
+        'generator' : "url('/assets/images/randombg.gif')",
       }
     },
   },

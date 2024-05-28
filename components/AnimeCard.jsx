@@ -49,8 +49,9 @@ const AnimeCard = ({ animeDetail, handleAdd, added }) => {
           </div>
           <p className='text-gray-600 text-[15px] max-w-2xl m-2'>{showMore ? animeDetail.synopsis : animeDetail.synopsis?.substr(0, 400)} <button type='button' className='blue_gradient underline' onClick={() => setShowMore(!showMore)}>{showMore ? 'Read less' : '. . Read more'}</button></p>
           {/* trailer  */}
+          
           <div className='flex justify-between items-center m-2'>
-            <button type='button' className='bg-rose-500 text-white p-1 sm:p-2 rounded-lg text-bolder text-xl' onClick={() => setShowTrailer(!showTrailer)}>{showTrailer ? 'Close' : 'Watch Trailer'}</button>
+           {animeDetail.trailer.embed_url && ( <button type='button' className='bg-rose-500 text-white p-1 sm:p-2 rounded-lg text-bolder text-xl' onClick={() => setShowTrailer(!showTrailer)}>{showTrailer ? 'Close' : 'Watch Trailer'}</button> )}
             <button type='button' className='p-3' onClick={handleAdd}>{added ? (<FaBookmark className='w-5 h-5' />)
               : (<FaRegBookmark className='w-5 h-5' />)}</button>
           </div>
