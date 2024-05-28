@@ -13,7 +13,7 @@ export const DirectionAwareHover = ({
 }) => {
   const ref = useRef(null);
   const router = useRouter()
-  const [direction, setDirection] = useState("left");
+  const [direction, setDirection] = useState("bottom");
 
   const handleMouseEnter = (
     event
@@ -35,7 +35,7 @@ export const DirectionAwareHover = ({
         setDirection("left");
         break;
       default:
-        setDirection("left");
+        setDirection("bottom");
         break;
     }
   };
