@@ -94,7 +94,7 @@ const AnimeProfile = () => {
             {similar?.map((anime , idx) => (
                <>
               <BrowserView>
-              <DirectionAwareHover imageUrl={anime.entry.images.jpg.image_url} id={anime.mal_id} key={idx}>
+              <DirectionAwareHover imageUrl={anime.entry.images.jpg.image_url} id={anime.entry.mal_id} key={idx}>
               <div className='bg-white p-1 rounded-full w-8 flex justify-center items-center'>
               <p className='font-extrabold orange_gradient'>{idx+1}</p></div>
               <p className='text-white font-semibold'>{anime.entry.title_english? anime.entry.title_english : anime.entry.title}</p>
@@ -102,7 +102,7 @@ const AnimeProfile = () => {
                </DirectionAwareHover>
                </BrowserView>
                <MobileView>
-               <DirectionAwareHoverMobile imageUrl={anime.entry.images.jpg.image_url} id={anime.mal_id} key={idx}>
+               <DirectionAwareHoverMobile imageUrl={anime.entry.images.jpg.image_url} id={anime.entry.mal_id} key={idx}>
                <div className='bg-white p-1 rounded-full w-8 flex justify-center items-center'>
               <p className='font-extrabold orange_gradient'>{idx+1}</p></div>
               <p className='text-white font-semibold'>{anime.entry.title_english? anime.entry.title_english : anime.entry.title}</p>
