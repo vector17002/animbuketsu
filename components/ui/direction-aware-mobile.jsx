@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/utils/cn";
 import { useRouter } from "next/navigation";
 
-export const DirectionAwareHover = ({
+export const DirectionAwareHoverMobile = ({
   imageUrl,
   children,
   id
@@ -56,7 +56,7 @@ export const DirectionAwareHover = ({
   }
   return (
     <motion.div
-      onHoverStart={handleMouseEnter}
+     onHoverStart={handleMouseEnter}
       ref={ref}
       className={cn(
         "min-w-[40vw] md:min-w-[15vw] h-[40vh] bg-transparent rounded-lg overflow-hidden group/card relative",
@@ -67,7 +67,7 @@ export const DirectionAwareHover = ({
         <motion.div
           className="relative h-full w-full"
           initial="initial"
-          whileHover={direction}
+          whileInView={direction}
           exit="exit"
         >
           <motion.div className="group-hover/card:block hidden absolute inset-0 w-full h-full bg-black/40 z-10 transition duration-500" />

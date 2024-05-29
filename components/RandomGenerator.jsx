@@ -13,7 +13,7 @@ const RandomGenerator = () => {
     setLoading(false);
   };
   return (
-    <div className="m-10 mt-5 h-full w-[90vw] md:bg-generator lg:h-[400px] bg-no-repeat bg-cover rounded-lg">
+    <div className="m-10 mt-5 h-full w-[95vw] md:bg-generator lg:h-[400px] bg-no-repeat bg-cover rounded-lg">
       <div className="flex h-full w-full flex-col items-center justify-evenly lg:flex-row md:bg-black/20 md:backdrop-blur-md rounded-xl">
         <div className="w-50 m-4 flex h-full flex-col items-center justify-center">
           <p className="head_text orange_gradient">Random anime Explorer</p>

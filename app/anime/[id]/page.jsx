@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 import { DirectionAwareHover } from "@components/ui/direction-aware-hover";
+import { DirectionAwareHoverMobile } from "@components/ui/direction-aware-mobile";
+import { BrowserView, MobileView , isBrowser , isMobile  } from "react-device-detect";
 const AnimeProfile = () => {
   const baseUrl = "https://api.jikan.moe/v4";
   const url = location.pathname;
@@ -88,14 +90,26 @@ const AnimeProfile = () => {
     <img src='/assets/icons/loader.svg' alt='loading' className='w-20 h-20 object-contain'/>
   </div>) : (
         <div className='relative flex items-center'>
-        <div className='flex flex-row min-w-[90vw] max-w-[90vw] h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-3 m-3'>
+        <div className='flex flex-row min-w-[90vw] max-w-[90vw] h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-10 m-3'>
             {similar?.map((anime , idx) => (
-              <DirectionAwareHover imageUrl={anime.entry.images.jpg.image_url} id={anime.entry.mal_id} key={idx}>
+               <>
+              <BrowserView>
+              <DirectionAwareHover imageUrl={anime.entry.images.jpg.image_url} id={anime.mal_id} key={idx}>
               <div className='bg-white p-1 rounded-full w-8 flex justify-center items-center'>
               <p className='font-extrabold orange_gradient'>{idx+1}</p></div>
               <p className='text-white font-semibold'>{anime.entry.title_english? anime.entry.title_english : anime.entry.title}</p>
               <div className="text-xs font-extrabold bg-white p-1 flex justify-center items-center w-20 rounded-lg"> <p className="blue_gradient">Votes: <span className="font-semibold text-rose-500">{anime.votes}</span></p></div>
                </DirectionAwareHover>
+               </BrowserView>
+               <MobileView>
+               <DirectionAwareHoverMobile imageUrl={anime.entry.images.jpg.image_url} id={anime.mal_id} key={idx}>
+               <div className='bg-white p-1 rounded-full w-8 flex justify-center items-center'>
+              <p className='font-extrabold orange_gradient'>{idx+1}</p></div>
+              <p className='text-white font-semibold'>{anime.entry.title_english? anime.entry.title_english : anime.entry.title}</p>
+              <div className="text-xs font-extrabold bg-white p-1 flex justify-center items-center w-20 rounded-lg"> <p className="blue_gradient">Votes: <span className="font-semibold text-rose-500">{anime.votes}</span></p></div>
+               </DirectionAwareHoverMobile>
+               </MobileView>
+               </>
             ))}
             </div>
         </div>
