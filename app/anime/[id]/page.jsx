@@ -66,7 +66,8 @@ const AnimeProfile = () => {
       }
     }
     getDetails();
-    getSimilar();
+    setTimeout(() => getSimilar() , 2000)
+    
   }, [url]);
   return (
     <div className="mb-5 mt-5 flex flex-col items-center justify-center">
