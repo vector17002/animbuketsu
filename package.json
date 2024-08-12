@@ -24,11 +24,13 @@
     "next": "^13.5.6",
     "next-auth": "^4.22.1",
     "postcss": "8.4.23",
+    "razorpay": "^2.9.4",
     "react": "18.2.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
+    "shortid": "^2.2.16",
     "tailwind-merge": "^2.3.0",
     "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss": "3.3.2"

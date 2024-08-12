@@ -2,7 +2,7 @@
 
 import React , {useState , useEffect} from 'react'
 import Footer from './Footer';
-import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect'
+import { BrowserView, MobileView} from 'react-device-detect'
 import RandomGenerator from './RandomGenerator';
 import toast from 'react-hot-toast';
 import { DirectionAwareHover } from './ui/direction-aware-hover';
@@ -93,7 +93,7 @@ const Feed = () => {
         <div className='w-[98vw] flex-col mt-10'>
         <p className='orange_gradient subhead_text ml-4'>Based on your search</p>
         <div className='relative flex items-center'>
-        <div className='flex flex-row w-[100vw] h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-6 m-3'>
+        <div className='flex flex-row w-[100vw] h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-3 md:gap-6 m-3'>
             {searchResult?.map((anime , idx) => (
               <>
               <BrowserView>
@@ -134,7 +134,7 @@ const Feed = () => {
     <img src='/assets/icons/loader.svg' alt='loading' className='w-20 h-20 object-contain'/>
   </div>) : (
         <div className='relative flex items-center'>
-        <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-6 m-3'>
+        <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-3 md:gap-6 m-3'>
             {popular?.map((anime , idx) => (
               <>
               <BrowserView>
@@ -176,7 +176,7 @@ const Feed = () => {
     <img src='/assets/icons/loader.svg' alt='loading' className='w-20 h-20 object-contain'/>
   </div>) : (
         <div className='relative flex items-center'>
-        <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-6 m-3'>
+        <div className='flex flex-row w-full h-full scroll overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-3 md:gap-6 m-3'>
             {top?.map((anime , idx) => (
               <>
               <BrowserView>

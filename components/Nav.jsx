@@ -1,28 +1,28 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState , useEffect } from 'react'
-import {signIn , signOut , useSession , getProviders} from 'next-auth/react'
+import { useState, useEffect } from 'react'
+import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
 import { useRouter } from 'next/navigation';
 const Nav = () => {
   const router = useRouter()
-  const { data: session} = useSession();
-  const [providers , setProviders] = useState(null);
+  const { data: session } = useSession();
+  const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
-  useEffect(()=>{
-      const setProvider = async () =>{
-        const response = await getProviders();
-        setProviders(response);
-      }
-      setProvider();
-  } , [])
+  useEffect(() => {
+    const setProvider = async () => {
+      const response = await getProviders();
+      setProviders(response);
+    }
+    setProvider();
+  }, [])
 
-  const handleRoute = async () =>{
-    await router.back()
+  const handleRoute = async () => {
+    await router.push('/')
   }
   return (
     <nav className='flex-between w-full mb-10 pt-3 xs:glassmorphism'>
-       <div className='flex gap-2 flex-center' onClick={(e) => handleRoute()}>
+      <div className='flex gap-2 flex-center' onClick={(e) => handleRoute()}>
         <Image
           src='/assets/images/logo.svg'
           alt='logo'
@@ -40,7 +40,7 @@ const Nav = () => {
               Sign Out
             </button>
             <Link href='/api/profile'>
-            <Image
+              <Image
                 src={session?.user.image}
                 width={35}
                 height={35}
@@ -49,20 +49,20 @@ const Nav = () => {
               />
             </Link>
           </div>
-        ):(
+        ) : (
           <>
-               {providers && 
-                Object.values(providers).map((provider)=>(
-                  <button
+            {providers &&
+              Object.values(providers).map((provider) => (
+                <button
                   type='button'
-                  key = {provider.name}
-                  onClick={ () => signIn(provider.id)}
+                  key={provider.name}
+                  onClick={() => signIn(provider.id)}
                   className='black_btn'
-                  >
-                   Sign In
-                  </button>
-                ))
-               }
+                >
+                  Sign In
+                </button>
+              ))
+            }
           </>
         )}
       </div>

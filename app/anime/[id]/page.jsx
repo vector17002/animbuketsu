@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 import { DirectionAwareHover } from "@components/ui/direction-aware-hover";
 import { DirectionAwareHoverMobile } from "@components/ui/direction-aware-mobile";
-import { BrowserView, MobileView , isBrowser , isMobile  } from "react-device-detect";
+import { BrowserView, MobileView} from "react-device-detect";
 const AnimeProfile = () => {
   const baseUrl = "https://api.jikan.moe/v4";
   const url = location.pathname;

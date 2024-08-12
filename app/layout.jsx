@@ -1,5 +1,4 @@
 import "@styles/globals.css";
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import Nav from "@components/Nav";
 import Provider from "@components/Provider";
 import { Toaster } from "react-hot-toast";
